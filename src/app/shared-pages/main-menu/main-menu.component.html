@@ -1,0 +1,30 @@
+<div class="menuContainer">
+    <a routerLink="accounts" class="menuBox" [ngClass]="menuBoxes.accounts === true ? 'w40' : 'w20'"
+        (click)="setFalse(); menuBoxes.accounts = true">
+        <div class="imgBox rotate45" [ngClass]="{'boxBgActif': menuBoxes.accounts === true}">
+            <img class="img" src="./assets/icons/account_balance.svg" alt="">
+        </div>
+        <p>Accounts</p>
+    </a>
+    <a routerLink="categories" class="menuBox" [ngClass]="menuBoxes.categories === true ? 'w40' : 'w20'"
+        (click)="setFalse(); menuBoxes.categories = true">
+        <div class="imgBox" [ngClass]="{'boxBgActif': menuBoxes.categories === true}">
+            <img class="img" src="./assets/icons/account_balance.svg" alt="">
+        </div>
+        <p>Categories</p>
+    </a>
+    <a routerLink="transactions" class="menuBox" [ngClass]="menuBoxes.transactions === true ? 'w40' : 'w20'"
+        (click)="setFalse(); menuBoxes.transactions = true">
+        <div class="imgBox rotate45" [ngClass]="{'boxBgActif': menuBoxes.transactions === true}">
+            <img class="img" src="./assets/icons/account_balance.svg" alt="">
+        </div>
+        <p>Transactions</p>
+    </a>
+    <a routerLink="mygoals" class="menuBox" [ngClass]="menuBoxes.myGoals === true ? 'w40' : 'w20'"
+        (click)="setFalse(); menuBoxes.myGoals = true">
+        <div class="imgBox rotate45" [ngClass]="{'boxBgActif': menuBoxes.myGoals === true}">
+            <img class="img" src="./assets/icons/account_balance.svg" alt="">
+        </div>
+        <p>My goals</p>
+    </a>
+</div>

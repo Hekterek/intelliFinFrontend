@@ -1,10 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import * as timeService from '../../services/time/timeService';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  accountBalance = 3152.0;
+  newDate: any;
 
+  ngOnInit(): void {
+    this.newDate =
+      timeService.getCurrentMonth() + ' ' + timeService.getCurrentYear();
+  }
 }

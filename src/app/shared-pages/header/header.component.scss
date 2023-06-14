@@ -1,16 +1,204 @@
+@use "../../../modulesScss" as mod;
+
 .header {
   height: 60px;
   width: 100%;
-  box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.473);
+  min-width: 300px;
+  background-color: mod.$bg-white;
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.473);
 }
 
 .container {
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   height: 100%;
-  width: min(100%, 1600px);
-  border: 1px solid red;
+  width: min(100%, 1700px);
+}
+
+/* ACCOUNT ICON */
+
+.imgAccountContainer {
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  width: 44px;
+  height: 44px;
+
+  @include mod.screen900 {
+    left: 15px;
+  }
+
+  @include mod.screen1200 {
+    &:hover {
+      cursor: pointer;
+    }
+    &:hover .imgAccountBg {
+      background-color: mod.$bg-hover-lights;
+    }
+  }
+}
+
+.imgAccountBg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  @include mod.screen1200 {
+    border-radius: 50%;
+  }
 }
 
 .imgAccount {
-  width: 30px;
-  border: 1px solid red;
+  width: 23px;
+
+  @include mod.screen1100 {
+    width: 25px;
+  }
+}
+
+/* ADD TRANSACTION CONTAINER */
+
+.addTransactionContainer {
+  display: none;
+  align-items: center;
+  gap: 7px;
+
+  @include mod.screen700 {
+    display: flex;
+  }
+
+  & .imgAddTransaction {
+    width: 30px;
+  }
+}
+
+/* MIDDLE CONTAINER */
+
+.middleContainer {
+  position: absolute;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-top: 10px;
+  transform: translateX(-50%);
+  text-align: center;
+  line-height: 20px;
+
+  & .accBalance {
+    display: none;
+
+    @include mod.screen700 {
+      display: block;
+    }
+  }
+
+  & .mobileDate {
+    @include mod.screen700 {
+      display: none;
+    }
+  }
+}
+
+/* DATE CONTAINER */
+
+.dateContainer {
+  display: none;
+
+  @include mod.screen700 {
+    display: block;
+  }
+}
+
+/* MENU */
+
+.menuContainer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+
+  @include mod.screen1100 {
+    right: 15px;
+  }
+}
+
+.menuBg {
+  border-radius: 50%;
+
+  // @include mod.screen1100 {
+  //   &:hover {
+  //     background-color: mod.$bg-hover-lights;
+  //   }
+  // }
+}
+
+.menu {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  padding-top: 1px;
+  transform: scale(0.9);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.line {
+  fill: none;
+  stroke: black;
+  outline: none;
+  stroke-width: 6;
+  transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+    stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 999;
+}
+
+.line1 {
+  stroke-dasharray: 60 207;
+  stroke-width: 6;
+}
+
+.line2 {
+  stroke-dasharray: 60 60;
+  stroke-width: 6;
+}
+
+.line3 {
+  stroke-dasharray: 60 207;
+  stroke-width: 6;
+}
+
+.opened .line1 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+  stroke-width: 6;
+}
+
+.opened .line2 {
+  stroke-dasharray: 1 60;
+  stroke-dashoffset: -30;
+  stroke-width: 6;
+}
+
+.opened .line3 {
+  stroke-dasharray: 90 207;
+  stroke-dashoffset: -134;
+  stroke-width: 6;
+}
+
+/* BG CONTAINER */
+
+.bgContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(100%, 1700px);
+  height: 100vh;
+  z-index: -1;
+  background-color: rgba(206, 203, 203, 0.342);
 }
