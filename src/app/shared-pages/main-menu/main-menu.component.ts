@@ -1,5 +1,5 @@
-import { Component, Renderer2 } from '@angular/core';
-import { menuBoxesModel } from '../models/menuBoxesModel';
+import { Component } from '@angular/core';
+import { NavigationStart, Router, Event } from '@angular/router';
 
 @Component({
   selector: 'app-main-menu',
@@ -7,16 +7,16 @@ import { menuBoxesModel } from '../models/menuBoxesModel';
   styleUrls: ['./main-menu.component.scss'],
 })
 export class MainMenuComponent {
-  menuBoxes: menuBoxesModel = {
-    accounts: false,
-    categories: true,
-    transactions: false,
-    myGoals: false,
-  };
+  currentUrl = '';
 
-  setFalse(): void {
-    for (let el in this.menuBoxes) {
-      this.menuBoxes[el] = false;
-    }
+  constructor(private router: Router) {
+    console.log(router.url);
+
+    this.router.events.subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        console.log(event.url);
+        this.currentUrl = event.url;
+      }
+    });
   }
 }
