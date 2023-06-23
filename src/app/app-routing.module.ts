@@ -24,6 +24,7 @@ const routes: Routes = [
       { path: 'mygoals', component: MyGoalsComponent },
     ],
   },
+  { path: '**', redirectTo: 'app', pathMatch: 'full' },
 ];
 
 @NgModule({
