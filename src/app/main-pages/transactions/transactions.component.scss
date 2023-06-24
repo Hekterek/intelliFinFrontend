@@ -1,0 +1,13 @@
+@use "../../../modulesScss" as mod;
+
+.container {
+  width: 100%;
+  height: calc(100vh - 170px);
+  border: 1px solid red;
+
+  @include mod.screen900 {
+    height: calc(100vh - 61px);
+    width: calc(100% - 110px);
+    margin-left: 110px;
+  }
+}

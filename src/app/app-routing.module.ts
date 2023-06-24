@@ -5,17 +5,13 @@ import { AccountsComponent } from './main-pages/accounts/accounts.component';
 import { TransactionsComponent } from './main-pages/transactions/transactions.component';
 import { MyGoalsComponent } from './main-pages/my-goals/my-goals.component';
 import { LoginPageComponent } from './start-page/login-page/login-page.component';
-import { MainMenuComponent } from './shared-pages/main-menu/main-menu.component';
+import { MainLayoutComponent } from './app-layout/main-layout/main-layout.component';
 
 const routes: Routes = [
-  // { path: 'categories', component: CategoriesComponent, outlet: 'app' },
-  // { path: 'accounts', component: AccountsComponent, outlet: 'app' },
-  // { path: 'transactions', component: TransactionsComponent, outlet: 'app' },
-  // { path: 'mygoals', component: MyGoalsComponent, outlet: 'app' },
   { path: '', component: LoginPageComponent },
   {
     path: 'app',
-    component: MainMenuComponent,
+    component: MainLayoutComponent,
     children: [
       { path: '', redirectTo: 'categories', pathMatch: 'full' },
       { path: 'accounts', component: AccountsComponent },

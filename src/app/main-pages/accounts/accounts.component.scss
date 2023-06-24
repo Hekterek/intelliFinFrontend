@@ -1,0 +1,22 @@
+@use "../../../modulesScss" as mod;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: calc(100vh - 170px);
+  //   border: 1px solid red;
+
+  @include mod.screen900 {
+    height: calc(100vh - 61px);
+    width: calc(100% - 110px);
+    margin-left: 110px;
+  }
+}
+
+.accountsContainer {
+  border: 1px solid red;
+  width: 100%;
+  height: 100%;
+}

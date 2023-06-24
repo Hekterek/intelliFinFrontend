@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { StartPageModule } from './start-page/start-page.module';
 import { SharedPagesModule } from './shared-pages/shared-pages.module';
 import { MainPagesModule } from './main-pages/main-pages.module';
+import { AppLayoutModule } from './app-layout/app-layout.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -15,6 +16,7 @@ import { MainPagesModule } from './main-pages/main-pages.module';
     SharedPagesModule,
     StartPageModule,
     MainPagesModule,
+    AppLayoutModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

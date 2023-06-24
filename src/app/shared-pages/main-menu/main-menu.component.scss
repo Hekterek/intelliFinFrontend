@@ -5,21 +5,26 @@ a {
   text-decoration: none;
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+}
+
 .menuContainer {
   position: fixed;
   bottom: 0;
-  width: 100%;
+  width: min(100%, 400px);
   display: flex;
   font-size: 0.7rem;
   padding: 0 10px;
   //   border: 1px solid red;
   -webkit-tap-highlight-color: transparent;
 
-  @include mod.screen700 {
+  @include mod.screen900 {
     flex-direction: column;
     justify-content: space-evenly;
     top: 150px;
-    right: 0;
+    left: 10px;
     bottom: initial;
     width: 80px;
     height: calc(100vh - 350px);
@@ -41,7 +46,7 @@ a {
     margin-bottom: 10px;
     transition: all 0.4s;
 
-    @include mod.screen700 {
+    @include mod.screen900 {
       width: 55px;
       justify-content: center;
     }
@@ -71,7 +76,7 @@ a {
   width: 21%;
   transform: scale(0.9);
 
-  @include mod.screen700 {
+  @include mod.screen900 {
     width: initial;
     height: 21%;
   }
@@ -82,10 +87,10 @@ a {
   transform: scale(1.3);
   transform: translateY(-20px);
 
-  @include mod.screen700 {
+  @include mod.screen900 {
     width: initial;
     height: 37%;
-    transform: translateX(-20px);
+    transform: translateX(20px);
   }
 }
 
