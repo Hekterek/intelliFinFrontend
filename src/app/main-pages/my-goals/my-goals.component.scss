@@ -7,7 +7,5 @@
 
   @include mod.screen900 {
     height: calc(100vh - 61px);
-    width: calc(100% - 110px);
-    margin-left: 110px;
   }
 }
