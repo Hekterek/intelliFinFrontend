@@ -1,6 +1,6 @@
 <div class="container">
     <div class="accountsContainer">
-        <div class="boxAccount">
+        <a class="boxAccount">
             <div class="iconNameContainer">
                 <div class="boxIcon">
                     <img class="img" src="./assets/icons/account_balance.svg" alt="">
@@ -10,6 +10,50 @@
             <div class="amountContainer">
                 <p>{{ 1250 | currency: 'EUR'}}</p>
             </div>
+        </a>
+        <div class="myAccountsContainer">
+            <p>My accounts</p>
         </div>
+        <a class="boxAccount">
+            <div class="iconNameContainer">
+                <div class="boxIcon">
+                    <img class="img" src="./assets/icons/account_balance.svg" alt="">
+                </div>
+                <p class="name">First account</p>
+            </div>
+            <div class="amountContainer">
+                <p>{{ 3568 | currency: 'EUR'}}</p>
+            </div>
+        </a>
+        <a class="boxAccount">
+            <div class="iconNameContainer">
+                <div class="boxIcon">
+                    <img class="img" src="./assets/icons/account_balance.svg" alt="">
+                </div>
+                <p class="name">Second account</p>
+            </div>
+            <div class="amountContainer">
+                <p>{{ 2153 | currency: 'EUR'}}</p>
+            </div>
+        </a>
+        <a class="boxAccount">
+            <div class="iconNameContainer">
+                <div class="boxIcon">
+                    <img class="img" src="./assets/icons/account_balance.svg" alt="">
+                </div>
+                <p class="name">Third account</p>
+            </div>
+            <div class="amountContainer">
+                <p>{{ 2555 | currency: 'EUR'}}</p>
+            </div>
+        </a>
+        <a class="boxAccount">
+            <div class="iconNameContainer">
+                <div class="boxIcon">
+                    <img class="img" src="./assets/icons/plus.svg" alt="">
+                </div>
+                <p class="name">Add new account</p>
+            </div>
+        </a>
     </div>
 </div>

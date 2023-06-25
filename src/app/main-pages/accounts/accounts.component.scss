@@ -10,13 +10,66 @@
 
   @include mod.screen900 {
     height: calc(100vh - 61px);
-    width: calc(100% - 110px);
-    margin-left: 110px;
   }
 }
 
 .accountsContainer {
-  border: 1px solid red;
+  // border: 1px solid red;
   width: 100%;
   height: 100%;
+
+  @include mod.screen500 {
+    width: 450px;
+    height: 80%;
+    // border: 2px solid gray;
+    // border-radius: 10px;
+    box-shadow: 0 0 13px 0px rgba(128, 128, 128, 0.568);
+    background-color: rgba(156, 155, 155, 0.24);
+  }
+}
+
+.boxAccount {
+  // border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 25px;
+  width: 100%;
+  height: 65px;
+  border-bottom: 1px solid gray;
+  transition: background-color 0.3s;
+
+  @include mod.screen900 {
+    &:hover {
+      cursor: pointer;
+      background-color: rgba(156, 155, 155, 0.144);
+    }
+  }
+}
+
+.iconNameContainer {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.boxIcon {
+  border: 1px solid black;
+  padding: 2px;
+  border-radius: 6px;
+}
+
+.amountContainer {
+  // border: 1px solid red;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.myAccountsContainer {
+  // border: 1px solid red;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 25px;
+  padding-left: 12px;
 }
