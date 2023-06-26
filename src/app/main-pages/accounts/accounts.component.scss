@@ -13,10 +13,13 @@
   }
 }
 
-.accountsContainer {
+.box {
   // border: 1px solid red;
+  position: relative;
   width: 100%;
   height: 100%;
+  transition: opacity 0.4s;
+  overflow: hidden;
 
   @include mod.screen500 {
     width: 450px;
@@ -27,6 +30,15 @@
     background-color: rgba(156, 155, 155, 0.24);
   }
 }
+
+.insideBox {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ACCOUNTS CONTAINER */
 
 .boxAccount {
   // border: 1px solid red;
@@ -73,3 +85,5 @@
   height: 25px;
   padding-left: 12px;
 }
+
+/* ADD ACCOUNTS CONTAINER */

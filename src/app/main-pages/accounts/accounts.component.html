@@ -1,59 +1,65 @@
 <div class="container">
-    <div class="accountsContainer">
-        <a class="boxAccount">
-            <div class="iconNameContainer">
-                <div class="boxIcon">
-                    <img class="img" src="./assets/icons/account_balance.svg" alt="">
+    <div class="box" [ngClass]="{'opacity0': test}">
+        <div class="insideBox" *ngIf="toggleAnimation" [@.disabled]="animationDisabled" [@fadeInRightBigOnEnter]
+            [@slideOutDownOnLeave]>
+            <a class="boxAccount" (click)="toggleAnim()">
+                <div class="iconNameContainer">
+                    <div class="boxIcon">
+                        <img class="img" src="./assets/icons/account_balance.svg" alt="">
+                    </div>
+                    <p class="name">Bank account</p>
                 </div>
-                <p class="name">Bank account</p>
+                <div class="amountContainer">
+                    <p>{{ 1250 | currency: 'EUR'}}</p>
+                </div>
+            </a>
+            <div class="myAccountsContainer">
+                <p>My accounts</p>
             </div>
-            <div class="amountContainer">
-                <p>{{ 1250 | currency: 'EUR'}}</p>
-            </div>
-        </a>
-        <div class="myAccountsContainer">
-            <p>My accounts</p>
+            <a class="boxAccount" (click)="toggleAnim()">
+                <div class="iconNameContainer">
+                    <div class="boxIcon">
+                        <img class="img" src="./assets/icons/account_balance.svg" alt="">
+                    </div>
+                    <p class="name">First account</p>
+                </div>
+                <div class="amountContainer">
+                    <p>{{ 3568 | currency: 'EUR'}}</p>
+                </div>
+            </a>
+            <a class="boxAccount" (click)="toggleAnim()">
+                <div class="iconNameContainer">
+                    <div class="boxIcon">
+                        <img class="img" src="./assets/icons/account_balance.svg" alt="">
+                    </div>
+                    <p class="name">Second account</p>
+                </div>
+                <div class="amountContainer">
+                    <p>{{ 2153 | currency: 'EUR'}}</p>
+                </div>
+            </a>
+            <a class="boxAccount" (click)="toggleAnim()">
+                <div class="iconNameContainer">
+                    <div class="boxIcon">
+                        <img class="img" src="./assets/icons/account_balance.svg" alt="">
+                    </div>
+                    <p class="name">Third account</p>
+                </div>
+                <div class="amountContainer">
+                    <p>{{ 2555 | currency: 'EUR'}}</p>
+                </div>
+            </a>
+            <a class="boxAccount">
+                <div class="iconNameContainer">
+                    <div class="boxIcon">
+                        <img class="img" src="./assets/icons/plus.svg" alt="">
+                    </div>
+                    <p class="name">Add new account</p>
+                </div>
+            </a>
         </div>
-        <a class="boxAccount">
-            <div class="iconNameContainer">
-                <div class="boxIcon">
-                    <img class="img" src="./assets/icons/account_balance.svg" alt="">
-                </div>
-                <p class="name">First account</p>
-            </div>
-            <div class="amountContainer">
-                <p>{{ 3568 | currency: 'EUR'}}</p>
-            </div>
-        </a>
-        <a class="boxAccount">
-            <div class="iconNameContainer">
-                <div class="boxIcon">
-                    <img class="img" src="./assets/icons/account_balance.svg" alt="">
-                </div>
-                <p class="name">Second account</p>
-            </div>
-            <div class="amountContainer">
-                <p>{{ 2153 | currency: 'EUR'}}</p>
-            </div>
-        </a>
-        <a class="boxAccount">
-            <div class="iconNameContainer">
-                <div class="boxIcon">
-                    <img class="img" src="./assets/icons/account_balance.svg" alt="">
-                </div>
-                <p class="name">Third account</p>
-            </div>
-            <div class="amountContainer">
-                <p>{{ 2555 | currency: 'EUR'}}</p>
-            </div>
-        </a>
-        <a class="boxAccount">
-            <div class="iconNameContainer">
-                <div class="boxIcon">
-                    <img class="img" src="./assets/icons/plus.svg" alt="">
-                </div>
-                <p class="name">Add new account</p>
-            </div>
-        </a>
+        <div class="insideBox" *ngIf="!toggleAnimation" [@fadeInRightBigOnEnter] [@slideOutDownOnLeave]>
+            <button (click)="toggleAnim()">Back</button>
+        </div>
     </div>
 </div>
