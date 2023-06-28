@@ -1,8 +1,7 @@
 <div class="container">
-    <div class="box" [ngClass]="{'opacity0': test}">
-        <div class="insideBox" *ngIf="toggleAnimation" [@.disabled]="animationDisabled" [@fadeInRightBigOnEnter]
-            [@slideOutDownOnLeave]>
-            <a class="boxAccount" (click)="toggleAnim()">
+    <div class="box" [ngClass]="{'opacity0': !test}">
+        <div class="insideBox">
+            <a class="boxAccount">
                 <div class="iconNameContainer">
                     <div class="boxIcon">
                         <img class="img" src="./assets/icons/account_balance.svg" alt="">
@@ -16,7 +15,7 @@
             <div class="myAccountsContainer">
                 <p>My accounts</p>
             </div>
-            <a class="boxAccount" (click)="toggleAnim()">
+            <a class="boxAccount">
                 <div class="iconNameContainer">
                     <div class="boxIcon">
                         <img class="img" src="./assets/icons/account_balance.svg" alt="">
@@ -27,7 +26,7 @@
                     <p>{{ 3568 | currency: 'EUR'}}</p>
                 </div>
             </a>
-            <a class="boxAccount" (click)="toggleAnim()">
+            <a class="boxAccount">
                 <div class="iconNameContainer">
                     <div class="boxIcon">
                         <img class="img" src="./assets/icons/account_balance.svg" alt="">
@@ -38,7 +37,7 @@
                     <p>{{ 2153 | currency: 'EUR'}}</p>
                 </div>
             </a>
-            <a class="boxAccount" (click)="toggleAnim()">
+            <a class="boxAccount">
                 <div class="iconNameContainer">
                     <div class="boxIcon">
                         <img class="img" src="./assets/icons/account_balance.svg" alt="">
@@ -57,9 +56,6 @@
                     <p class="name">Add new account</p>
                 </div>
             </a>
-        </div>
-        <div class="insideBox" *ngIf="!toggleAnimation" [@fadeInRightBigOnEnter] [@slideOutDownOnLeave]>
-            <button (click)="toggleAnim()">Back</button>
         </div>
     </div>
 </div>

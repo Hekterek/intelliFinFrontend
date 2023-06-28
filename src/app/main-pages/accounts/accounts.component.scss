@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: min(100%, 1700px);
   height: calc(100vh - 170px);
   //   border: 1px solid red;
 
@@ -85,5 +85,3 @@
   height: 25px;
   padding-left: 12px;
 }
-
-/* ADD ACCOUNTS CONTAINER */

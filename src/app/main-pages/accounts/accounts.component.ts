@@ -1,33 +1,17 @@
 import { AfterViewInit, Component } from '@angular/core';
-import {
-  fadeInRightBigOnEnterAnimation,
-  slideOutDownOnLeaveAnimation,
-} from 'angular-animations';
 
 @Component({
   selector: 'app-accounts',
   templateUrl: './accounts.component.html',
   styleUrls: ['./accounts.component.scss'],
-  animations: [
-    fadeInRightBigOnEnterAnimation(),
-    slideOutDownOnLeaveAnimation({ translate: '1000px' }),
-    ,
-  ],
+  animations: [],
 })
 export class AccountsComponent implements AfterViewInit {
-  // componentActif = 'accounts';
-  toggleAnimation: boolean = true;
-  animationDisabled: boolean = true;
-  test = true;
-
-  toggleAnim() {
-    this.toggleAnimation = !this.toggleAnimation;
-  }
+  test = false;
 
   ngAfterViewInit(): void {
     setTimeout(() => {
-      this.animationDisabled = false;
-      this.test = false;
+      this.test = true;
     }, 0);
   }
 }
