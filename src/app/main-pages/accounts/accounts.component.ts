@@ -1,4 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AccountOptionsComponent } from 'src/app/app-layout/dialogs/accountOptions/accountOptions.component';
 
 @Component({
   selector: 'app-accounts',
@@ -8,6 +10,21 @@ import { AfterViewInit, Component } from '@angular/core';
 })
 export class AccountsComponent implements AfterViewInit {
   test = false;
+
+  constructor(private optionsDialog: MatDialog) {
+    // this.openAccountOptionsDialog();
+  }
+
+  openAccountOptionsDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.position = {
+      bottom: '0',
+    };
+    dialogConfig.width = '100%';
+    dialogConfig.maxWidth = '100vw';
+
+    this.optionsDialog.open(AccountOptionsComponent, dialogConfig);
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => {

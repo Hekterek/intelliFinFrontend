@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoriesComponent } from './categories/categories.component';
-import { SharedPagesModule } from '../shared-pages/shared-pages.module';
 import { AccountsComponent } from './accounts/accounts.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { MyGoalsComponent } from './my-goals/my-goals.component';
@@ -14,6 +13,6 @@ import { MyGoalsComponent } from './my-goals/my-goals.component';
     TransactionsComponent,
     MyGoalsComponent,
   ],
-  imports: [CommonModule, SharedPagesModule],
+  imports: [CommonModule],
 })
 export class MainPagesModule {}

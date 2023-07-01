@@ -1,7 +1,7 @@
 <div class="container">
     <div class="box" [ngClass]="{'opacity0': !test}">
         <div class="insideBox">
-            <a class="boxAccount">
+            <a class="boxAccount" (click)="openAccountOptionsDialog()">
                 <div class="iconNameContainer">
                     <div class="boxIcon">
                         <img class="img" src="./assets/icons/account_balance.svg" alt="">
