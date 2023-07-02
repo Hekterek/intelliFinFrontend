@@ -1,6 +1,6 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { AccountOptionsComponent } from 'src/app/app-layout/dialogs/accountOptions/accountOptions.component';
+import { AccountOptionsComponent } from 'src/app/main-pages/accounts/dialogs/accountOptions/accountOptions.component';
 
 @Component({
   selector: 'app-accounts',

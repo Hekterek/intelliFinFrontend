@@ -16,7 +16,9 @@ export class AccountOptionsComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<AccountOptionsComponent>,
     private editDialog: MatDialog
-  ) {}
+  ) {
+    // this.goToEditAccount();
+  }
 
   ngOnInit() {}
 
