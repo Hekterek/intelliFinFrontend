@@ -6,9 +6,11 @@ import { TransactionsComponent } from './main-pages/transactions/transactions.co
 import { MyGoalsComponent } from './main-pages/my-goals/my-goals.component';
 import { LoginPageComponent } from './start-page/login-page/login-page.component';
 import { MainLayoutComponent } from './app-layout/main-layout/main-layout.component';
+import { WelcomePageComponent } from './start-page/welcomePage/welcomePage.component';
 
 const routes: Routes = [
-  { path: '', component: LoginPageComponent },
+  { path: '', component: WelcomePageComponent },
+  { path: 'login', component: LoginPageComponent },
   {
     path: 'app',
     component: MainLayoutComponent,
