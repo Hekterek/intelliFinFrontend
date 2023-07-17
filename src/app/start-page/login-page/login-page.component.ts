@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LoginData } from 'src/app/app-layout/models/login';
 import { UserService } from 'src/app/services/User.service';
 
@@ -15,12 +17,21 @@ export class LoginPageComponent {
     rememberMe: false,
   });
 
-  constructor(private userService: UserService, private fb: FormBuilder) {}
+  constructor(
+    private userService: UserService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {}
 
   login() {
     const loginData = this.form.value as LoginData;
     console.log(loginData);
 
-    this.userService.login(loginData).subscribe();
+    this.userService.login(loginData).subscribe({
+      next: (value) => {
+        this.userService.setLoggedUser(value);
+        this.router.navigate(['/categories']);
+      },
+    });
   }
 }
