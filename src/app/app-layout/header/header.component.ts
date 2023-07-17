@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import * as timeService from '../../services/time/timeService';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +7,7 @@ import * as timeService from '../../services/time/timeService';
 })
 export class HeaderComponent implements OnInit {
   accountBalance = 3152.0;
-  newDate: any;
+  newDate: string = 'September 2023';
 
-  ngOnInit(): void {
-    this.newDate =
-      timeService.getCurrentMonth() + ' ' + timeService.getCurrentYear();
-  }
+  ngOnInit(): void {}
 }

@@ -1,5 +1,11 @@
 <div class="container">
-    <form>
-
+    <form class="form" [formGroup]="form" (ngSubmit)="login()">
+        <input placeholder="login" [formControl]="form.controls.login">
+        <input placeholder="password" [formControl]="form.controls.password" type="password">
+        <div>
+            <input type="checkbox" name="rememberMe" id="rememberMe" [formControl]="form.controls.rememberMe">
+            <label for="rememberMe">Remember me</label>
+        </div>
+        <button>Login</button>
     </form>
 </div>
