@@ -25,12 +25,12 @@ export class LoginPageComponent {
 
   login() {
     const loginData = this.form.value as LoginData;
-    console.log(loginData);
 
     this.userService.login(loginData).subscribe({
       next: (value) => {
         this.userService.setLoggedUser(value);
-        this.router.navigate(['/categories']);
+        console.log('efbeberb');
+        this.router.navigate(['/app/categories']);
       },
     });
   }
