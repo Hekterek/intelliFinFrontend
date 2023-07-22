@@ -8,19 +8,22 @@ import { LoginPageComponent } from './start-page/login-page/login-page.component
 import { MainLayoutComponent } from './app-layout/main-layout/main-layout.component';
 import { WelcomePageComponent } from './start-page/welcomePage/welcomePage.component';
 import { AuthGuard } from './guards/auth.guard';
-import { AfterAuthGuard } from './guards/after-auth.guard';
 
 const routes: Routes = [
-  { path: '', component: WelcomePageComponent, canActivate: [AfterAuthGuard] },
+  {
+    path: '',
+    component: WelcomePageComponent,
+    //  canActivate: [AfterAuthGuard]
+  },
   {
     path: 'login',
     component: LoginPageComponent,
-    canActivate: [AfterAuthGuard],
+    // canActivate: [AfterAuthGuard],
   },
   {
     path: 'app',
     component: MainLayoutComponent,
-    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',
@@ -30,22 +33,18 @@ const routes: Routes = [
       {
         path: 'accounts',
         component: AccountsComponent,
-        canActivate: [AuthGuard],
       },
       {
         path: 'categories',
         component: CategoriesComponent,
-        canActivate: [AuthGuard],
       },
       {
         path: 'transactions',
         component: TransactionsComponent,
-        canActivate: [AuthGuard],
       },
       {
         path: 'mygoals',
         component: MyGoalsComponent,
-        canActivate: [AuthGuard],
       },
     ],
   },

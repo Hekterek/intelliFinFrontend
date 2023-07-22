@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -27,9 +26,7 @@ export class LoginPageComponent {
     const loginData = this.form.value as LoginData;
 
     this.userService.login(loginData).subscribe({
-      next: (value) => {
-        this.userService.setLoggedUser(value);
-        console.log('efbeberb');
+      next: () => {
         this.router.navigate(['/app/categories']);
       },
     });
