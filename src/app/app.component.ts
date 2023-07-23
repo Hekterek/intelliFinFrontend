@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from './services/User.service';
+import { AuthService } from './services/Auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,9 @@ import { UserService } from './services/User.service';
 export class AppComponent implements OnInit {
   title = 'MyFinancesProject';
 
-  constructor(private userService: UserService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
-    this.userService.checkAuth();
+    this.authService.checkAuth();
   }
 }

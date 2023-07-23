@@ -8,17 +8,18 @@ import { LoginPageComponent } from './start-page/login-page/login-page.component
 import { MainLayoutComponent } from './app-layout/main-layout/main-layout.component';
 import { WelcomePageComponent } from './start-page/welcomePage/welcomePage.component';
 import { AuthGuard } from './guards/auth.guard';
+import { AfterAuthGuard } from './guards/after-auth.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: WelcomePageComponent,
-    //  canActivate: [AfterAuthGuard]
+    canActivate: [AfterAuthGuard],
   },
   {
     path: 'login',
     component: LoginPageComponent,
-    // canActivate: [AfterAuthGuard],
+    canActivate: [AfterAuthGuard],
   },
   {
     path: 'app',

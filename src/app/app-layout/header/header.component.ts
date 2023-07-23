@@ -1,6 +1,5 @@
-import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/User.service';
+import { AuthService } from 'src/app/services/Auth.service';
 
 @Component({
   selector: 'app-header',
@@ -11,11 +10,11 @@ export class HeaderComponent implements OnInit {
   accountBalance = 3152.0;
   newDate: string = 'September 2023';
 
-  constructor(private userService: UserService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
 
   logout() {
-    this.userService.logout();
+    this.authService.logout();
   }
 }

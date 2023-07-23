@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AccountOptionsComponent } from 'src/app/main-pages/accounts/dialogs/accountOptions/accountOptions.component';
+import { account } from 'src/app/models/accountModels';
+import { AccountService } from 'src/app/services/Account.service';
 
 @Component({
   selector: 'app-accounts',
@@ -10,12 +12,30 @@ import { AccountOptionsComponent } from 'src/app/main-pages/accounts/dialogs/acc
 })
 export class AccountsComponent implements OnInit, AfterViewInit {
   opacity = false;
+  mainAccount: account[] = [];
+  personalAccounts: account[] = [];
 
-  constructor(private optionsDialog: MatDialog) {
+  constructor(
+    private optionsDialog: MatDialog,
+    private accountService: AccountService
+  ) {
     // this.openAccountOptionsDialog();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.accountService
+      .getAllAccounts()
+      .subscribe((data) => this.manageAccounts(data));
+  }
+
+  manageAccounts(data: account[]) {
+    this.mainAccount = data.filter((account) => {
+      return account.mainAccount === true;
+    });
+    this.personalAccounts = data.filter((account) => {
+      return account.mainAccount === false;
+    });
+  }
 
   ngAfterViewInit(): void {
     setTimeout(() => {

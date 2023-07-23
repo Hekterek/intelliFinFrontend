@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LoginData } from 'src/app/app-layout/models/login';
-import { UserService } from 'src/app/services/User.service';
+import { AuthService } from 'src/app/services/Auth.service';
 
 @Component({
   selector: 'app-login-page',
@@ -17,7 +17,7 @@ export class LoginPageComponent {
   });
 
   constructor(
-    private userService: UserService,
+    private authService: AuthService,
     private fb: FormBuilder,
     private router: Router
   ) {}
@@ -25,7 +25,7 @@ export class LoginPageComponent {
   login() {
     const loginData = this.form.value as LoginData;
 
-    this.userService.login(loginData).subscribe({
+    this.authService.login(loginData).subscribe({
       next: () => {
         this.router.navigate(['/app/categories']);
       },

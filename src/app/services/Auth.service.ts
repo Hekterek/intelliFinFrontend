@@ -10,12 +10,13 @@ import { checkAuth } from '../models/checkAuth';
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class AuthService {
   private checkIfLogged: boolean = false;
 
   constructor(private httpClient: HttpClient, private router: Router) {}
 
   getCheckIfLogged(): boolean {
+    // return this.checkAuth().subscribe()
     return this.checkIfLogged.valueOf();
   }
 
@@ -45,11 +46,11 @@ export class UserService {
       });
   }
 
-  checkAuth(): void {
+  checkAuth() {
     this.httpClient
       .get<checkAuth>(`${restApiUrl}/api/user/checkAuth`, httpConfig)
       .subscribe((value) => {
-        this.checkIfLogged = value.value;
+        this.setCheckIfLogged(value.value);
       });
   }
 }
