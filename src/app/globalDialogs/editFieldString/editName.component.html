@@ -1,0 +1,13 @@
+<form class="container" [formGroup]="form">
+    <div class="header">
+        <p>{{ title }}</p>
+    </div>
+    <div class="nameInput">
+        <input [formControl]="form.controls.accountName">
+    </div>
+    <div class="btns">
+        <button>Submit</button>
+        <button>Cancel</button>
+    </div>
+
+</form>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { addAccount } from 'src/app/models/accountModels';
-import { EditNameComponent } from '../editName/editName.component';
+import { EditNameComponent } from '../../../../globalDialogs/editFieldString/editName.component';
 
 @Component({
   selector: 'app-addAccount',
@@ -10,19 +10,28 @@ import { EditNameComponent } from '../editName/editName.component';
   standalone: true,
 })
 export class AddAccountComponent implements OnInit {
-  newAccountData: addAccount[] = [];
+  newAccountData: addAccount = {
+    name: '___________',
+    description: '___________',
+    icon: 'icon',
+    color: 'color',
+    includeTotal: true,
+  };
 
-  constructor(private nameDialog: MatDialog) {}
+  constructor(private nameDialog: MatDialog) {
+    this.openFieldStringDialog();
+  }
 
   ngOnInit() {}
 
-  openNameDialog() {
+  openFieldStringDialog() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.position = {
-      bottom: '0',
-    };
     dialogConfig.width = '100%';
     dialogConfig.maxWidth = '100vw';
+
+    dialogConfig.data = {
+      title: 'Name',
+    };
 
     this.nameDialog.open(EditNameComponent, dialogConfig);
   }

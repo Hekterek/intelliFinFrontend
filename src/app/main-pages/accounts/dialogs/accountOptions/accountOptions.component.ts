@@ -25,7 +25,8 @@ export class AccountOptionsComponent implements OnInit {
   goToEditAccount() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.position = {
-      bottom: '0',
+      top: '0',
+      left: '0',
     };
     dialogConfig.width = '100%';
     dialogConfig.maxWidth = '100vw';
