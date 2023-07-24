@@ -9,7 +9,7 @@
                     <p class="name">{{ mainAccount[0] ? mainAccount[0].name : '' }}</p>
                 </div>
                 <div class="amountContainer">
-                    <p>{{ mainAccount[0] ? '€ ' + mainAccount[0].amount : ''}}</p>
+                    <p>{{ mainAccount[0] ? '€ ' + (mainAccount[0].amount | number: '1.2-2') : ''}}</p>
                 </div>
             </a>
             <div class="myAccountsContainer">
@@ -23,10 +23,10 @@
                     <p class="name">{{ account.name }}</p>
                 </div>
                 <div class="amountContainer">
-                    <p>{{ '€ ' + account.amount }}</p>
+                    <p>{{ '€ ' + (account.amount | number: '1.2-2') }}</p>
                 </div>
             </a>
-            <a class="boxAccount" *ngIf="personalAccounts.length < 5">
+            <a class="boxAccount" *ngIf="personalAccounts.length < 5" (click)="openAddAccountDialog()">
                 <div class="iconNameContainer">
                     <div class="boxIcon">
                         <img class="img" src="./assets/icons/plus.svg" alt="">

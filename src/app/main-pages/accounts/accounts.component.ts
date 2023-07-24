@@ -3,6 +3,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AccountOptionsComponent } from 'src/app/main-pages/accounts/dialogs/accountOptions/accountOptions.component';
 import { account } from 'src/app/models/accountModels';
 import { AccountService } from 'src/app/services/Account.service';
+import { AddAccountComponent } from './dialogs/addAccount/addAccount.component';
 
 @Component({
   selector: 'app-accounts',
@@ -20,6 +21,7 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     private accountService: AccountService
   ) {
     // this.openAccountOptionsDialog();
+    this.openAddAccountDialog();
   }
 
   ngOnInit(): void {
@@ -29,11 +31,10 @@ export class AccountsComponent implements OnInit, AfterViewInit {
   }
 
   manageAccounts(data: account[]) {
-    this.mainAccount = data.filter((account) => {
-      return account.mainAccount === true;
-    });
-    this.personalAccounts = data.filter((account) => {
-      return account.mainAccount === false;
+    data.filter((account) => {
+      account.mainAccount === true
+        ? this.mainAccount.push(account)
+        : this.personalAccounts.push(account);
     });
   }
 
@@ -52,5 +53,16 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     dialogConfig.maxWidth = '100vw';
 
     this.optionsDialog.open(AccountOptionsComponent, dialogConfig);
+  }
+
+  openAddAccountDialog() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.position = {
+      bottom: '0',
+    };
+    dialogConfig.width = '100%';
+    dialogConfig.maxWidth = '100vw';
+
+    this.optionsDialog.open(AddAccountComponent, dialogConfig);
   }
 }
