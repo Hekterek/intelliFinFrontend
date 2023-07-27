@@ -11,8 +11,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
   selector: 'app-editName',
   templateUrl: './editName.component.html',
   styleUrls: ['./editName.component.scss'],
-  standalone: true,
-  imports: [ReactiveFormsModule],
 })
 export class EditNameComponent implements OnInit {
   title: any = '';
@@ -29,4 +27,12 @@ export class EditNameComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  save() {
+    this.dialogRef.close(this.form.value);
+  }
+
+  close() {
+    this.dialogRef.close();
+  }
 }

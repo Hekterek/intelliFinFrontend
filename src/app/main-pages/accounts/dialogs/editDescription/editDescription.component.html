@@ -1,0 +1,13 @@
+<form class="container" [formGroup]="form">
+  <div class="header">
+    <p>{{ title }}</p>
+  </div>
+  <div class="nameInput">
+    <textarea [formControl]="form.controls.accountDesc" maxlength="15"></textarea>
+  </div>
+  <div class="btns">
+    <button (click)="save()">Submit</button>
+    <button (click)="close()">Cancel</button>
+  </div>
+
+</form>

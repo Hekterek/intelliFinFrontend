@@ -1,22 +1,23 @@
-<div class="container">
+<form class="container" [formGroup]="newAccountData">
   <div class="header">
     <p>Create account</p>
     <img class="doneIcon" src="../../../../../assets/icons/check.svg" alt="done">
   </div>
   <div class="nameIconContainer">
-    <a class="nameContainer" (click)="openFieldStringDialog()">
+    <a class="nameContainer" (click)="openSetNameDialog()">
       <p>Name</p>
-      <p class="nameValue">{{ newAccountData.name }}</p>
+      <input class="nameValue" [formControl]="newAccountData.controls.name" readonly>
     </a>
-    <a class="iconContainer">
+    <a class="iconContainer" (click)="openSetIconDialog()">
       <p>Icon</p>
-      <img src="./assets/icons/account_balance.svg" alt="">
+      <img class="icon" [srcset]="newAccountData.controls.icon.value" alt="">
     </a>
   </div>
   <div class="descColorContainer">
-    <a class="descContainer">
+    <a class="descContainer" (click)="openSetDescDialog()">
       <p>Description</p>
-      <p class="descValue">{{ newAccountData.description }}</p>
+      <textarea class="descValue" [formControl]="newAccountData.controls.description" readonly></textarea>
+
     </a>
     <a class="colorContainer">
       <p>Color</p>
@@ -25,8 +26,8 @@
   </div>
   <a class="checkBoxContainer">
     <label class="switch">
-      <input type="checkbox" checked>
+      <input type="checkbox" checked [formControl]="newAccountData.controls.includeTotal">
       <p>Include in total balance</p>
     </label>
   </a>
-</div>
+</form>

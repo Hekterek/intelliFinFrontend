@@ -3,11 +3,11 @@
         <p>{{ title }}</p>
     </div>
     <div class="nameInput">
-        <input [formControl]="form.controls.accountName">
+        <input [formControl]="form.controls.accountName" maxlength="15">
     </div>
     <div class="btns">
-        <button>Submit</button>
-        <button>Cancel</button>
+        <button (click)="save()">Submit</button>
+        <button (click)="close()">Cancel</button>
     </div>
 
 </form>

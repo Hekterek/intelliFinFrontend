@@ -8,7 +8,6 @@ import { EditAccountComponent } from '../editAccount/editAccount.component';
 
 @Component({
   selector: 'app-accountOptions',
-  standalone: true,
   templateUrl: './accountOptions.component.html',
   styleUrls: ['./accountOptions.component.scss'],
 })

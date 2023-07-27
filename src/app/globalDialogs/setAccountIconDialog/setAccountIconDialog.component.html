@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="header">
+    <p>{{ title }}</p>
+  </div>
+  <div class="iconContainer">
+    <div class="iconBG" *ngFor="let icon of icons" (click)="saveIcon(icon)">
+      <img class="icon" alt="Account icon" [srcset]="icon">
+    </div>
+  </div>
+
+</div>
