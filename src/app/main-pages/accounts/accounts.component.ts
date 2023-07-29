@@ -21,10 +21,14 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     private accountService: AccountService
   ) {
     // this.openAccountOptionsDialog();
-    this.openAddAccountDialog();
+    // this.openAddAccountDialog();
   }
 
   ngOnInit(): void {
+    this.getAllAccounts();
+  }
+
+  getAllAccounts() {
     this.accountService
       .getAllAccounts()
       .subscribe((data) => this.manageAccounts(data));
@@ -63,6 +67,15 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     dialogConfig.width = '100%';
     dialogConfig.maxWidth = '100vw';
 
-    this.optionsDialog.open(AddAccountComponent, dialogConfig);
+    const dialogRef = this.optionsDialog.open(
+      AddAccountComponent,
+      dialogConfig
+    );
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.mainAccount = [];
+      this.personalAccounts = [];
+      this.getAllAccounts();
+    });
   }
 }

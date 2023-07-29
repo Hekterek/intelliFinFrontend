@@ -1,4 +1,4 @@
-@use "../../../modulesScss" as mod;
+@use "../../../../../modulesScss/" as mod;
 
 .container {
   width: 80%;
@@ -12,17 +12,17 @@
     align-items: center;
     width: 100%;
     height: 30px;
-    background-color: rgb(163, 94, 227);
+    // background-color: rgb(65, 164, 235);
   }
 }
 
-.iconContainer {
+.colorContainer {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   padding: 15px;
 
-  & .iconBG {
+  & .colorBG {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,8 +31,8 @@
     margin: 4px;
     border-radius: 50%;
     background-color: rgba(151, 150, 150, 0.278);
-    & .icon {
-      width: 25px;
-    }
+    // & .icon {
+    //   width: 25px;
+    // }
   }
 }

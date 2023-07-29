@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="header">
+    <p>{{ title }}</p>
+  </div>
+  <div class="colorContainer">
+    <div class="colorBG" [style.background-color]="color" *ngFor="let color of colors" (click)="saveColor(color)">
+      <!-- <img class="icon" alt="Account icon" [srcset]="icon"> -->
+    </div>
+  </div>
+
+</div>

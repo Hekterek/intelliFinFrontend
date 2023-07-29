@@ -10,7 +10,8 @@ import { AddAccountComponent } from './accounts/dialogs/addAccount/addAccount.co
 import { EditAccountComponent } from './accounts/dialogs/editAccount/editAccount.component';
 import { EditNameComponent } from './accounts/dialogs/editName/editName.component';
 import { EditDescriptionComponent } from './accounts/dialogs/editDescription/editDescription.component';
-import { SetAccountIconDialogComponent } from '../globalDialogs/setAccountIconDialog/setAccountIconDialog.component';
+import { SetAccountIconDialogComponent } from './accounts/dialogs/setAccountIconDialog/setAccountIconDialog.component';
+import { SetAccountColorComponent } from './accounts/dialogs/setAccountColor/setAccountColor.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SetAccountIconDialogComponent } from '../globalDialogs/setAccountIconDi
     EditNameComponent,
     EditDescriptionComponent,
     SetAccountIconDialogComponent,
+    SetAccountColorComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule],
 })

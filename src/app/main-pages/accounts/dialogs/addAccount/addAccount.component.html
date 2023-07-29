@@ -1,7 +1,7 @@
 <form class="container" [formGroup]="newAccountData">
   <div class="header">
     <p>Create account</p>
-    <img class="doneIcon" src="../../../../../assets/icons/check.svg" alt="done">
+    <img class="doneIcon" src="../../../../../assets/icons/check.svg" alt="done" (click)="saveAccount()">
   </div>
   <div class="nameIconContainer">
     <a class="nameContainer" (click)="openSetNameDialog()">
@@ -19,9 +19,9 @@
       <textarea class="descValue" [formControl]="newAccountData.controls.description" readonly></textarea>
 
     </a>
-    <a class="colorContainer">
+    <a class="colorContainer" (click)="openSetColorDialog()">
       <p>Color</p>
-      <div class="color"></div>
+      <div class="color" [style.background-color]="newAccountData.controls.color.value"></div>
     </a>
   </div>
   <a class="checkBoxContainer">
