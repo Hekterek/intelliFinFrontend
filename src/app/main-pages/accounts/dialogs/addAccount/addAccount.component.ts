@@ -43,6 +43,7 @@ export class AddAccountComponent implements OnInit {
     const dataOfNewAccount = this.newAccountData.value as addAccount;
     this.accountService.saveNewAccount(dataOfNewAccount).subscribe(() => {
       this.dialogRef.close();
+      this.router.navigate(['/app/accounts']);
     });
   }
 

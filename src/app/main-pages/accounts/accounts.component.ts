@@ -4,6 +4,7 @@ import { AccountOptionsComponent } from 'src/app/main-pages/accounts/dialogs/acc
 import { account } from 'src/app/models/accountModels';
 import { AccountService } from 'src/app/services/Account.service';
 import { AddAccountComponent } from './dialogs/addAccount/addAccount.component';
+import { SpinnerComponent } from 'src/app/shared/spinner/spinner.component';
 
 @Component({
   selector: 'app-accounts',
@@ -12,26 +13,47 @@ import { AddAccountComponent } from './dialogs/addAccount/addAccount.component';
   animations: [],
 })
 export class AccountsComponent implements OnInit, AfterViewInit {
-  opacity = false;
+  opacity: boolean = false;
   mainAccount: account[] = [];
   personalAccounts: account[] = [];
+  spinnerRef: any;
 
   constructor(
-    private optionsDialog: MatDialog,
+    private dialog: MatDialog,
     private accountService: AccountService
   ) {
     // this.openAccountOptionsDialog();
     // this.openAddAccountDialog();
+    this.runSpinner();
+    // this.stopSpinner();
+  }
+
+  runSpinner() {
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.position = {
+    //   bottom: '0',
+    // };
+    // dialogConfig.width = '100%';
+    // dialogConfig.maxWidth = '100vw';
+    dialogConfig.hasBackdrop = false;
+    this.spinnerRef = this.dialog.open(SpinnerComponent, dialogConfig);
+  }
+
+  stopSpinner() {
+    this.spinnerRef.close();
   }
 
   ngOnInit(): void {
     this.getAllAccounts();
+    // this.mainAccount = mainAccount;
+    // this.personalAccounts = personalAccounts;
   }
 
   getAllAccounts() {
-    this.accountService
-      .getAllAccounts()
-      .subscribe((data) => this.manageAccounts(data));
+    // this.runSpinner();
+    this.accountService.getAllAccounts().subscribe((data) => {
+      this.manageAccounts(data);
+    });
   }
 
   manageAccounts(data: account[]) {
@@ -40,6 +62,7 @@ export class AccountsComponent implements OnInit, AfterViewInit {
         ? this.mainAccount.push(account)
         : this.personalAccounts.push(account);
     });
+    // this.stopSpinner();
   }
 
   ngAfterViewInit(): void {
@@ -56,7 +79,7 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     dialogConfig.width = '100%';
     dialogConfig.maxWidth = '100vw';
 
-    this.optionsDialog.open(AccountOptionsComponent, dialogConfig);
+    this.dialog.open(AccountOptionsComponent, dialogConfig);
   }
 
   openAddAccountDialog() {
@@ -67,15 +90,12 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     dialogConfig.width = '100%';
     dialogConfig.maxWidth = '100vw';
 
-    const dialogRef = this.optionsDialog.open(
-      AddAccountComponent,
-      dialogConfig
-    );
+    const dialogRef = this.dialog.open(AddAccountComponent, dialogConfig);
 
-    dialogRef.afterClosed().subscribe(() => {
-      this.mainAccount = [];
-      this.personalAccounts = [];
-      this.getAllAccounts();
-    });
+    // dialogRef.afterClosed().subscribe(() => {
+    //   mainAccount = [];
+    //   personalAccounts = [];
+    //   this.getAllAccounts();
+    // });
   }
 }

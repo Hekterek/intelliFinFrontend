@@ -8,6 +8,7 @@ import { StartPageModule } from './start-page/start-page.module';
 import { MainPagesModule } from './main-pages/main-pages.module';
 import { AppLayoutModule } from './app-layout/app-layout.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     MatDialogModule,
     HttpClientModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
