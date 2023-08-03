@@ -9,6 +9,7 @@ import { MainLayoutComponent } from './app-layout/main-layout/main-layout.compon
 import { WelcomePageComponent } from './start-page/welcomePage/welcomePage.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AfterAuthGuard } from './guards/after-auth.guard';
+import { accountResolver } from './services/resolvers/accounts-resolver.resolver';
 
 const routes: Routes = [
   {
@@ -34,6 +35,7 @@ const routes: Routes = [
       {
         path: 'accounts',
         component: AccountsComponent,
+        resolve: { accountsResolver: accountResolver },
       },
       {
         path: 'categories',

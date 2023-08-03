@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { httpConfig, restApiUrl } from './common';
 import { Observable } from 'rxjs';
 import { account, addAccount } from '../models/accountModels';
-import { mainAccount, personalAccounts } from 'src/app/data/accountsData';
 
 @Injectable({
   providedIn: 'root',

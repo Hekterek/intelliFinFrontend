@@ -4,7 +4,7 @@
             <a class="boxAccount" (click)="openAccountOptionsDialog()">
                 <div class="iconNameContainer">
                     <div class="boxIcon">
-                        <img class="img" src="./assets/icons/account_balance.svg" alt="">
+                        <img class="img" [src]="mainAccount[0] ? mainAccount[0].icon : ''" alt="">
                     </div>
                     <p class="name">{{ mainAccount[0] ? mainAccount[0].name : '' }}</p>
                 </div>
@@ -18,7 +18,7 @@
             <a class="boxAccount" *ngFor="let account of personalAccounts">
                 <div class="iconNameContainer">
                     <div class="boxIcon">
-                        <img class="img" src="./assets/icons/account_balance.svg" alt="">
+                        <img class="img" [src]="account.icon" alt="">
                     </div>
                     <p class="name">{{ account.name }}</p>
                 </div>
