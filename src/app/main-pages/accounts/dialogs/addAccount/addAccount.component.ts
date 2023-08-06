@@ -12,6 +12,7 @@ import { SetAccountColorComponent } from '../setAccountColor/setAccountColor.com
 import { AccountService } from 'src/app/services/Account.service';
 import { addAccount } from 'src/app/models/accountModels';
 import { Router } from '@angular/router';
+import { DialogRef } from '@angular/cdk/dialog';
 @Component({
   selector: 'app-addAccount',
   templateUrl: './addAccount.component.html',
@@ -41,10 +42,14 @@ export class AddAccountComponent implements OnInit {
 
   saveAccount() {
     const dataOfNewAccount = this.newAccountData.value as addAccount;
-    this.accountService.saveNewAccount(dataOfNewAccount).subscribe(() => {
-      this.dialogRef.close();
-      this.router.navigate(['/app/accounts']);
-    });
+    // this.accountService.saveNewAccount(dataOfNewAccount).subscribe(() => {
+    //   this.ngOnInit();
+    // });
+
+    // this.router.navigate([this.router.url]).then(() => {
+    //   window.location.reload();
+    // });
+    this.dialogRef.close(dataOfNewAccount);
   }
 
   openSetNameDialog() {

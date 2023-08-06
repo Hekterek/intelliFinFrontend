@@ -10,15 +10,15 @@ import { account, addAccount } from '../models/accountModels';
 export class AccountService {
   constructor(private httpClient: HttpClient) {}
 
-  getAllAccounts(): Observable<account[]> {
+  getAllAccounts() {
     return this.httpClient.get<account[]>(
       `${restApiUrl}/api/account`,
       httpConfig
     );
   }
 
-  saveNewAccount(newAccount: addAccount): Observable<void> {
-    return this.httpClient.post<void>(
+  saveNewAccount(newAccount: addAccount): Observable<account> {
+    return this.httpClient.post<account>(
       `${restApiUrl}/api/account/save`,
       newAccount,
       httpConfig

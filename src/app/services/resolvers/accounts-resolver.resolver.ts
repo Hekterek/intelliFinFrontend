@@ -1,11 +1,9 @@
 import {
-  Router,
-  Resolve,
   RouterStateSnapshot,
   ActivatedRouteSnapshot,
   ResolveFn,
 } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { account } from 'src/app/models/accountModels';
 import { AccountService } from '../Account.service';
 import { inject } from '@angular/core';

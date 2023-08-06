@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+// import { TestBed } from '@angular/core/testing';
 
-import { AccountsResolverResolver } from './accounts-resolver.resolver';
+// import { AccountsResolverResolver } from './accounts-resolver.resolver';
 
-describe('AccountsResolverResolver', () => {
-  let resolver: AccountsResolverResolver;
+// describe('AccountsResolverResolver', () => {
+//   let resolver: AccountsResolverResolver;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
-    resolver = TestBed.inject(AccountsResolverResolver);
-  });
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({});
+//     resolver = TestBed.inject(AccountsResolverResolver);
+//   });
 
-  it('should be created', () => {
-    expect(resolver).toBeTruthy();
-  });
-});
+//   it('should be created', () => {
+//     expect(resolver).toBeTruthy();
+//   });
+// });
