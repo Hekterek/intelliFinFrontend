@@ -1,35 +1,35 @@
-<div class="container">
+<form class="container">
     <div class="header">
         <p>Edit account</p>
         <img class="doneIcon" src="../../../../../assets/icons/check.svg" alt="done">
     </div>
     <div class="nameIconContainer">
-        <a class="nameContainer">
+        <a class="nameContainer" (click)="openEditNameDialog()">
             <p>Name</p>
-            <p class="nameValue">Bank account</p>
+            <p class="nameValue">{{ editedAccount.controls.name.value }}</p>
         </a>
-        <a class="iconContainer">
+        <a class="iconContainer" (click)="openEditIconDialog()">
             <p>Icon</p>
-            <img src="../../../../../assets/icons/account_balance.svg" alt="">
+            <img [src]="editedAccount.controls.icon.value" alt="">
         </a>
     </div>
     <div class="descColorContainer">
-        <a class="descContainer">
-            <p>Name</p>
-            <p class="descValue">Description of account</p>
+        <a class="descContainer" (click)="openEditDescDialog()">
+            <p>Description</p>
+            <p class="descValue">{{ editedAccount.controls.description.value }}</p>
         </a>
-        <a class="colorContainer">
-            <p>Icon</p>
-            <div class="color"></div>
+        <a class="colorContainer" (click)="openEditColorDialog()">
+            <p>Color</p>
+            <div class="color" [style.background]="editedAccount.controls.color.value"></div>
         </a>
     </div>
     <a class="checkBoxContainer">
         <label class="switch">
-            <input type="checkbox" checked>
+            <input type="checkbox" [checked]="editedAccount.controls.includeTotal.value">
             <p>Include in total balance</p>
         </label>
     </a>
     <a class="deleteContainer">
         <p>Delete account</p>
     </a>
-</div>
+</form>

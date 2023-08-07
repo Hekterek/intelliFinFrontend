@@ -33,6 +33,10 @@
   justify-content: center;
   gap: 15px;
   width: 50%;
+
+  & img {
+    width: 25px;
+  }
 }
 
 .descColorContainer {

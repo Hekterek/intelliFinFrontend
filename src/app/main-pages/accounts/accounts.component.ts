@@ -42,11 +42,12 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     }, 0);
   }
 
-  openAccountOptionsDialog() {
+  openAccountOptionsDialog(account: account) {
     this.dialog.open(AccountOptionsComponent, {
       position: { bottom: '0' },
       width: '100%',
       maxWidth: '100vw',
+      data: account,
     });
   }
 

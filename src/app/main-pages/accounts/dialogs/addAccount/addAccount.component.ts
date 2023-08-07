@@ -9,10 +9,7 @@ import { FormBuilder } from '@angular/forms';
 import { EditDescriptionComponent } from '../editDescription/editDescription.component';
 import { SetAccountIconDialogComponent } from 'src/app/main-pages/accounts/dialogs/setAccountIconDialog/setAccountIconDialog.component';
 import { SetAccountColorComponent } from '../setAccountColor/setAccountColor.component';
-import { AccountService } from 'src/app/services/Account.service';
 import { addAccount } from 'src/app/models/accountModels';
-import { Router } from '@angular/router';
-import { DialogRef } from '@angular/cdk/dialog';
 @Component({
   selector: 'app-addAccount',
   templateUrl: './addAccount.component.html',
@@ -30,9 +27,7 @@ export class AddAccountComponent implements OnInit {
   constructor(
     private nameDialog: MatDialog,
     private fb: FormBuilder,
-    private accountService: AccountService,
-    private dialogRef: MatDialogRef<AddAccountComponent>,
-    private router: Router
+    private dialogRef: MatDialogRef<AddAccountComponent>
   ) {
     // this.openSetIconDialog();
     // this.openSetColorDialog();
@@ -42,13 +37,6 @@ export class AddAccountComponent implements OnInit {
 
   saveAccount() {
     const dataOfNewAccount = this.newAccountData.value as addAccount;
-    // this.accountService.saveNewAccount(dataOfNewAccount).subscribe(() => {
-    //   this.ngOnInit();
-    // });
-
-    // this.router.navigate([this.router.url]).then(() => {
-    //   window.location.reload();
-    // });
     this.dialogRef.close(dataOfNewAccount);
   }
 

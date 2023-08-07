@@ -1,7 +1,18 @@
 <div class="container">
     <div class="box" [ngClass]="{'opacity0': !opacity}">
         <div class="insideBox">
-            <a class="boxAccount" (click)="openAccountOptionsDialog()">
+            <a class="boxAccount" *ngFor="let account of mainAccount" (click)="openAccountOptionsDialog(account)">
+                <div class="iconNameContainer">
+                    <div class="boxIcon">
+                        <img class="img" [src]="account.icon" alt="">
+                    </div>
+                    <p class="name">{{ account.name }}</p>
+                </div>
+                <div class="amountContainer">
+                    <p>{{ '€ ' + (account.amount | number: '1.2-2') }}</p>
+                </div>
+            </a>
+            <!-- <a class="boxAccount" (click)="openAccountOptionsDialog()">
                 <div class="iconNameContainer">
                     <div class="boxIcon">
                         <img class="img" [src]="mainAccount[0] ? mainAccount[0].icon : ''" alt="">
@@ -11,12 +22,11 @@
                 <div class="amountContainer">
                     <p>{{ mainAccount[0] ? '€ ' + (mainAccount[0].amount | number: '1.2-2') : ''}}</p>
                 </div>
-            </a>
+            </a> -->
             <div class="myAccountsContainer">
                 <p>My accounts</p>
             </div>
-            <!-- <a class="boxAccount" *ngFor="let account of personalAccounts"> -->
-            <a class="boxAccount" *ngFor="let account of personalAccounts">
+            <a class="boxAccount" *ngFor="let account of personalAccounts" (click)="openAccountOptionsDialog(account)">
                 <div class="iconNameContainer">
                     <div class="boxIcon">
                         <img class="img" [src]="account.icon" alt="">
