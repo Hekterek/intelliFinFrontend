@@ -43,11 +43,26 @@ export class AccountsComponent implements OnInit, AfterViewInit {
   }
 
   openAccountOptionsDialog(account: account) {
-    this.dialog.open(AccountOptionsComponent, {
+    const dialogRef = this.dialog.open(AccountOptionsComponent, {
       position: { bottom: '0' },
       width: '100%',
       maxWidth: '100vw',
       data: account,
+    });
+
+    dialogRef.afterClosed().subscribe((data: account) => {
+      if (data !== undefined) {
+        if (data.id === this.mainAccount[0].id) {
+          this.mainAccount[0] = data;
+        } else {
+          this.personalAccounts.forEach((account) => {
+            if (account.id === data.id) {
+              this.personalAccounts[this.personalAccounts.indexOf(account)] =
+                data;
+            }
+          });
+        }
+      }
     });
   }
 

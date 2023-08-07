@@ -24,4 +24,12 @@ export class AccountService {
       httpConfig
     );
   }
+
+  updateAccount(editedAccount: account): Observable<account> {
+    return this.httpClient.post<account>(
+      `${restApiUrl}/api/account/update`,
+      editedAccount,
+      httpConfig
+    );
+  }
 }

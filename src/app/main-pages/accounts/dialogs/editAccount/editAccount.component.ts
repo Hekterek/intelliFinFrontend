@@ -1,11 +1,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { account } from 'src/app/models/accountModels';
 import { EditNameComponent } from '../editName/editName.component';
 import { EditDescriptionComponent } from '../editDescription/editDescription.component';
 import { SetAccountIconDialogComponent } from '../setAccountIconDialog/setAccountIconDialog.component';
 import { SetAccountColorComponent } from '../setAccountColor/setAccountColor.component';
+import { AccountService } from 'src/app/services/Account.service';
 
 @Component({
   selector: 'app-editAccount',
@@ -27,10 +32,12 @@ export class EditAccountComponent implements OnInit {
 
   constructor(
     private dialog: MatDialog,
+    private dialogRef: MatDialogRef<EditAccountComponent>,
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) private data: account
+    @Inject(MAT_DIALOG_DATA) private data: account,
+    private accountService: AccountService
   ) {
-    console.log(data);
+    // console.log(data);
   }
 
   ngOnInit() {
@@ -47,6 +54,14 @@ export class EditAccountComponent implements OnInit {
     this.editedAccount.controls.includeTotal.setValue(this.data.includeTotal);
     this.editedAccount.controls['mainAccount'].setValue(this.data.mainAccount);
     this.editedAccount.controls['userId'].setValue(this.data.userId);
+  }
+
+  saveEditedAccount() {
+    const editedAccount = this.editedAccount.value as account;
+
+    this.accountService.updateAccount(editedAccount).subscribe((data) => {
+      this.dialogRef.close(data);
+    });
   }
 
   openEditNameDialog() {

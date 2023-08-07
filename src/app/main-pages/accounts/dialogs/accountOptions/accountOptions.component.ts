@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
-  MatDialogConfig,
   MatDialogRef,
 } from '@angular/material/dialog';
 import { EditAccountComponent } from '../editAccount/editAccount.component';
@@ -29,7 +28,7 @@ export class AccountOptionsComponent implements OnInit {
   ngOnInit() {}
 
   goToEditAccount() {
-    this.editDialog.open(EditAccountComponent, {
+    const dialogRef = this.editDialog.open(EditAccountComponent, {
       position: {
         bottom: '0',
         left: '0',
@@ -39,6 +38,14 @@ export class AccountOptionsComponent implements OnInit {
       data: this.currentAccountData,
     });
 
-    this.dialogRef.close();
+    dialogRef.afterClosed().subscribe((data) => {
+      // console.log(data);
+
+      if (data !== undefined) {
+        this.dialogRef.close(data);
+      } else {
+        this.dialogRef.close();
+      }
+    });
   }
 }
