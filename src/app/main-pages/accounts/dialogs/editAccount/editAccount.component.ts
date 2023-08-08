@@ -11,6 +11,7 @@ import { EditDescriptionComponent } from '../editDescription/editDescription.com
 import { SetAccountIconDialogComponent } from '../setAccountIconDialog/setAccountIconDialog.component';
 import { SetAccountColorComponent } from '../setAccountColor/setAccountColor.component';
 import { AccountService } from 'src/app/services/Account.service';
+import { ConfirmDialogComponent } from 'src/app/globalDialogs/confirmDialog/confirmDialog.component';
 
 @Component({
   selector: 'app-editAccount',
@@ -59,9 +60,7 @@ export class EditAccountComponent implements OnInit {
   saveEditedAccount() {
     const editedAccount = this.editedAccount.value as account;
 
-    this.accountService.updateAccount(editedAccount).subscribe((data) => {
-      this.dialogRef.close(data);
-    });
+    this.dialogRef.close(editedAccount);
   }
 
   openEditNameDialog() {
@@ -127,6 +126,22 @@ export class EditAccountComponent implements OnInit {
     dialogRef.afterClosed().subscribe((data) => {
       if (data !== undefined || null) {
         this.editedAccount.controls.color.setValue(data);
+      }
+    });
+  }
+
+  openConfirmDialog() {
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Are you sure to do this ?',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((confirm) => {
+      if (confirm === true) {
+        this.dialogRef.close(true);
+      } else {
+        this.dialogRef.close(false);
       }
     });
   }

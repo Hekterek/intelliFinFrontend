@@ -5,6 +5,7 @@ import { account } from 'src/app/models/accountModels';
 import { AccountService } from 'src/app/services/Account.service';
 import { AddAccountComponent } from './dialogs/addAccount/addAccount.component';
 import { ActivatedRoute } from '@angular/router';
+import { EditAccountComponent } from './dialogs/editAccount/editAccount.component';
 
 @Component({
   selector: 'app-accounts',
@@ -50,18 +51,9 @@ export class AccountsComponent implements OnInit, AfterViewInit {
       data: account,
     });
 
-    dialogRef.afterClosed().subscribe((data: account) => {
-      if (data !== undefined) {
-        if (data.id === this.mainAccount[0].id) {
-          this.mainAccount[0] = data;
-        } else {
-          this.personalAccounts.forEach((account) => {
-            if (account.id === data.id) {
-              this.personalAccounts[this.personalAccounts.indexOf(account)] =
-                data;
-            }
-          });
-        }
+    dialogRef.afterClosed().subscribe((option) => {
+      if (option === 'edit') {
+        this.openEditAccountDialog(account);
       }
     });
   }
@@ -80,6 +72,41 @@ export class AccountsComponent implements OnInit, AfterViewInit {
           .subscribe((response: account) => {
             this.personalAccounts.push(response);
           });
+      }
+    });
+  }
+
+  openEditAccountDialog(account: account) {
+    const dialogRef = this.dialog.open(EditAccountComponent, {
+      position: {
+        bottom: '0',
+        left: '0',
+      },
+      width: '100%',
+      maxWidth: '100vw',
+      data: account,
+    });
+
+    dialogRef.afterClosed().subscribe((data) => {
+      console.log(data);
+
+      if (data !== undefined && data !== true) {
+        this.accountService.updateAccount(data).subscribe((editedAccount) => {
+          if (this.mainAccount[0].id === editedAccount.id) {
+            this.mainAccount[0] = editedAccount;
+          } else {
+            const index = this.personalAccounts.findIndex(
+              (acc) => editedAccount.id === acc.id
+            );
+            this.personalAccounts[index] = editedAccount;
+          }
+        });
+      } else if (data === true) {
+        this.accountService.removeAccount(account.id).subscribe(() => {
+          this.personalAccounts = this.personalAccounts.filter(
+            (el) => el.id !== account.id
+          );
+        });
       }
     });
   }

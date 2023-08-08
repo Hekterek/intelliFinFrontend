@@ -22,30 +22,35 @@ export class AccountOptionsComponent implements OnInit {
   ) {
     this.currentAccountData = data;
 
-    this.goToEditAccount();
+    // this.goToEditAccount();
   }
 
   ngOnInit() {}
 
-  goToEditAccount() {
-    const dialogRef = this.editDialog.open(EditAccountComponent, {
-      position: {
-        bottom: '0',
-        left: '0',
-      },
-      width: '100%',
-      maxWidth: '100vw',
-      data: this.currentAccountData,
-    });
-
-    dialogRef.afterClosed().subscribe((data) => {
-      // console.log(data);
-
-      if (data !== undefined) {
-        this.dialogRef.close(data);
-      } else {
-        this.dialogRef.close();
-      }
-    });
+  openEditAccountDialog() {
+    this.dialogRef.close('edit');
   }
+
+  // goToEditAccount() {
+  //   const dialogRef = this.editDialog.open(EditAccountComponent, {
+  //     position: {
+  //       bottom: '0',
+  //       left: '0',
+  //     },
+  //     width: '100%',
+  //     maxWidth: '100vw',
+  //     data: this.currentAccountData,
+  //   });
+
+  //   dialogRef.afterClosed().subscribe((data) => {
+  //     // console.log(data);
+
+  //     if (data !== undefined) {
+  //       this.dialogRef.close(data);
+  //     }
+  //     // else {
+  //     //   this.dialogRef.close();
+  //     // }
+  //   });
+  // }
 }

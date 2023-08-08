@@ -17,3 +17,7 @@ export interface addAccount {
   color: string | null;
   includeTotal: boolean;
 }
+
+export interface accountId {
+  id: number;
+}

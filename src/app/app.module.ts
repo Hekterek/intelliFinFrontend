@@ -9,9 +9,10 @@ import { MainPagesModule } from './main-pages/main-pages.module';
 import { AppLayoutModule } from './app-layout/app-layout.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ConfirmDialogComponent } from './globalDialogs/confirmDialog/confirmDialog.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ConfirmDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
