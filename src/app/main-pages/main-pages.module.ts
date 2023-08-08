@@ -13,6 +13,7 @@ import { EditDescriptionComponent } from './accounts/dialogs/editDescription/edi
 import { SetAccountIconDialogComponent } from './accounts/dialogs/setAccountIconDialog/setAccountIconDialog.component';
 import { SetAccountColorComponent } from './accounts/dialogs/setAccountColor/setAccountColor.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { RechargeComponent } from './accounts/dialogs/recharge/recharge.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     EditDescriptionComponent,
     SetAccountIconDialogComponent,
     SetAccountColorComponent,
+    RechargeComponent,
   ],
   imports: [CommonModule, ReactiveFormsModule, MatProgressSpinnerModule],
 })

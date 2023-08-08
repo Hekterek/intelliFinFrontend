@@ -140,8 +140,6 @@ export class EditAccountComponent implements OnInit {
     dialogRef.afterClosed().subscribe((confirm) => {
       if (confirm === true) {
         this.dialogRef.close(true);
-      } else {
-        this.dialogRef.close(false);
       }
     });
   }

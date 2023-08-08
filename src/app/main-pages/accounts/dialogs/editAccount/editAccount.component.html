@@ -23,13 +23,13 @@
             <div class="color" [style.background]="editedAccount.controls.color.value"></div>
         </a>
     </div>
-    <a class="checkBoxContainer">
+    <a class="checkBoxContainer" *ngIf="editedAccount.controls.mainAccount.value === false">
         <label class="switch">
             <input type="checkbox" [checked]="editedAccount.controls.includeTotal.value">
             <p>Include in total balance</p>
         </label>
     </a>
-    <a class="deleteContainer" (click)="openConfirmDialog()">
+    <a class="deleteContainer" (click)="openConfirmDialog()" *ngIf="editedAccount.controls.mainAccount.value === false">
         <p>Delete account</p>
     </a>
 </form>

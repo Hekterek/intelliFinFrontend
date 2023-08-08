@@ -6,6 +6,7 @@ import { AccountService } from 'src/app/services/Account.service';
 import { AddAccountComponent } from './dialogs/addAccount/addAccount.component';
 import { ActivatedRoute } from '@angular/router';
 import { EditAccountComponent } from './dialogs/editAccount/editAccount.component';
+import { RechargeComponent } from './dialogs/recharge/recharge.component';
 
 @Component({
   selector: 'app-accounts',
@@ -24,6 +25,7 @@ export class AccountsComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
+    this.openRechargeDialog();
     this.getAllAccounts();
   }
 
@@ -54,6 +56,8 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     dialogRef.afterClosed().subscribe((option) => {
       if (option === 'edit') {
         this.openEditAccountDialog(account);
+      } else if (option === 'recharge') {
+        this.openRechargeDialog();
       }
     });
   }
@@ -108,6 +112,17 @@ export class AccountsComponent implements OnInit, AfterViewInit {
           );
         });
       }
+    });
+  }
+
+  openRechargeDialog() {
+    this.dialog.open(RechargeComponent, {
+      position: {
+        bottom: '0',
+        // left: '0',
+      },
+      width: '100%',
+      maxWidth: '100vw',
     });
   }
 }
