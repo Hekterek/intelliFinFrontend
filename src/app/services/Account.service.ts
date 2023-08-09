@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { httpConfig, restApiUrl } from './common';
 import { Observable } from 'rxjs';
-import { account, accountId, addAccount } from '../models/accountModels';
+import { account, addAccount } from '../models/accountModels';
 
 @Injectable({
   providedIn: 'root',
@@ -19,7 +19,7 @@ export class AccountService {
 
   saveNewAccount(newAccount: addAccount): Observable<account> {
     return this.httpClient.post<account>(
-      `${restApiUrl}/api/account/save`,
+      `${restApiUrl}/api/account`,
       newAccount,
       httpConfig
     );
