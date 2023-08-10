@@ -25,8 +25,8 @@ export class AccountsComponent implements OnInit, AfterViewInit {
   ) {}
 
   ngOnInit(): void {
-    this.openRechargeDialog();
     this.getAllAccounts();
+    this.openRechargeDialog(this.personalAccounts[0]);
   }
 
   getAllAccounts() {
@@ -57,7 +57,7 @@ export class AccountsComponent implements OnInit, AfterViewInit {
       if (option === 'edit') {
         this.openEditAccountDialog(account);
       } else if (option === 'recharge') {
-        this.openRechargeDialog();
+        this.openRechargeDialog(account);
       }
     });
   }
@@ -115,7 +115,7 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     });
   }
 
-  openRechargeDialog() {
+  openRechargeDialog(account: account) {
     this.dialog.open(RechargeComponent, {
       position: {
         bottom: '0',
@@ -123,6 +123,7 @@ export class AccountsComponent implements OnInit, AfterViewInit {
       },
       width: '100%',
       maxWidth: '100vw',
+      data: account,
     });
   }
 }

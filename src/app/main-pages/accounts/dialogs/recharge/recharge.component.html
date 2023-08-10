@@ -1,7 +1,7 @@
-<div class="container">
+<form class="container">
 
-  <div class="account">
-    <p class="accountName">Bank account</p>
+  <div class="account" [style.backgroundColor]="data.color">
+    <p class="accountName">{{ data.name }}</p>
     <div class="bgIcon">
       <img src="./assets/icons/backspace.svg" alt="">
     </div>
@@ -9,63 +9,64 @@
 
   <div class="amountContainer">
     <p class="titleAmount">Amount</p>
-    <p class="amount">{{ 3000 | currency:'EUR':'symbol':'1.2-2' }}</p>
+    <!-- <p class="amount">{{ data.amount | currency:'EUR':'symbol':'1.2-2' }}</p> -->
+    <input class="amount" readonly [value]="transactionForm.controls.amount.value | currency:'EUR':'symbol':'1.2-2'">
   </div>
 
   <div class="notesContainer">
-    <input class="inputNotes" placeholder="Notes...">
+    <input class="inputNotes" placeholder="Notes..." readonly [value]="transactionForm.controls.notes.value">
   </div>
 
   <div class="keyboardContainer">
-    <div>
+    <button class="btn btn-7" (click)="addNumber('7', $event)">
       <p>7</p>
-    </div>
-    <div>
+    </button>
+    <button class="btn btn-8" (click)="addNumber('8', $event)">
       <p>8</p>
-    </div>
-    <div>
+    </button>
+    <button class="btn btn-9" (click)="addNumber('9', $event)">
       <p>9</p>
-    </div>
-    <div>
+    </button>
+    <button class="btn btn-backspace" (click)="removeLastNumber($event)">
       <img src="./assets/icons/backspace.svg" alt="Backspace">
-    </div>
-    <div>
+    </button>
+    <button class="btn btn-4" (click)="addNumber('4', $event)">
       <p>4</p>
-    </div>
-    <div>
+    </button>
+    <button class="btn btn-5" (click)="addNumber('5', $event)">
       <p>5</p>
-    </div>
-    <div>
+    </button>
+    <button class="btn btn-6" (click)="addNumber('6', $event)">
       <p>6</p>
-    </div>
-    <div>
-      <p>Calendar</p>
-    </div>
-    <div>
+    </button>
+    <button class="btn btn-calendar">
+      <img src="" alt="Calendar">
+    </button>
+    <button class="btn btn-1" (click)="addNumber('1', $event)">
       <p>1</p>
-    </div>
-    <div>
+    </button>
+    <button class="btn btn-2" (click)="addNumber('2', $event)">
       <p>2</p>
-    </div>
-    <div>
+    </button>
+    <button class="btn btn-3" (click)="addNumber('3', $event)">
       <p>3</p>
-    </div>
-    <div>
+    </button>
+    <button class="btn btn-done">
       <img src="./assets/icons/check.svg" alt="done">
-    </div>
-    <div>
+    </button>
+    <button class="btn btn-00" (click)="addNumber('00', $event)">
       <p>00</p>
-    </div>
-    <div>
+    </button>
+    <button class="btn btn-0" (click)="addNumber('0', $event)">
       <p>0</p>
-    </div>
-    <div>
+    </button>
+    <button class="btn btn-comma">
       <p>,</p>
-    </div>
+    </button>
   </div>
 
   <div class="dateContainer">
-    <p></p>
+    <p>Date</p>
   </div>
 
-</div>
+</form>
