@@ -13,7 +13,7 @@
     <input class="amount" readonly [value]="transactionForm.controls.amount.value | currency:'EUR':'symbol':'1.2-2'">
   </div>
 
-  <div class="notesContainer">
+  <div class="notesContainer" (click)="openEditDescDialog()">
     <input class="inputNotes" placeholder="Notes..." readonly [value]="transactionForm.controls.notes.value">
   </div>
 
@@ -60,7 +60,7 @@
     <button class="btn btn-0" (click)="addNumber('0', $event)">
       <p>0</p>
     </button>
-    <button class="btn btn-comma">
+    <button class="btn btn-comma" (click)="addNumber('.', $event)">
       <p>,</p>
     </button>
   </div>

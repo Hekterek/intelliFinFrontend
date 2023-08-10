@@ -9,8 +9,9 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class EditDescriptionComponent implements OnInit {
   title: any = '';
+  // descValue: any = '';
   form = this.fb.group({
-    accountDesc: [''],
+    desc: [''],
   });
 
   constructor(
@@ -19,6 +20,7 @@ export class EditDescriptionComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.title = data.title;
+    this.form.controls.desc.setValue(data.desc);
   }
 
   ngOnInit() {}

@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { account } from 'src/app/models/accountModels';
+import { EditDescriptionComponent } from '../editDescription/editDescription.component';
 
 @Component({
   selector: 'app-recharge',
@@ -19,7 +20,8 @@ export class RechargeComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) protected data: account,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private dialog: MatDialog
   ) {
     this.transactionForm.controls.id.setValue(data.id);
     this.transactionForm.controls.accountName.setValue(data.name);
@@ -41,8 +43,32 @@ export class RechargeComponent implements OnInit {
 
     if (amount !== null && amount !== '0') {
       const amountArr = amount.split('');
-      amountArr.pop();
+      if (amountArr[amountArr.length - 1] === '.') {
+        amountArr.pop();
+        amountArr.pop();
+      } else {
+        amountArr.pop();
+      }
       this.transactionForm.controls.amount.setValue(amountArr.join(''));
     }
+  }
+
+  openEditDescDialog() {
+    const descRef = this.dialog.open(EditDescriptionComponent, {
+      width: '80%',
+      data: {
+        title: 'Description',
+        desc: this.transactionForm.controls.notes.value,
+      },
+      position: {
+        top: '100px',
+      },
+    });
+
+    descRef.afterClosed().subscribe((data) => {
+      if (data !== undefined) {
+        this.transactionForm.controls.notes.setValue(data.desc);
+      }
+    });
   }
 }
