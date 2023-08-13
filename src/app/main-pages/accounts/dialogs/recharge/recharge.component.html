@@ -39,8 +39,9 @@
     <button class="btn btn-6" (click)="addNumber('6', $event)">
       <p>6</p>
     </button>
-    <button class="btn btn-calendar">
-      <img src="" alt="Calendar">
+    <button class="btn btn-calendar" (click)="openDatepicker($event)">
+      <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
+      <mat-datepicker-toggle [for]="picker" (click)="openDatepicker($event)"></mat-datepicker-toggle>
     </button>
     <button class="btn btn-1" (click)="addNumber('1', $event)">
       <p>1</p>
@@ -66,7 +67,9 @@
   </div>
 
   <div class="dateContainer">
-    <p>Date</p>
+    <!-- <mat-datepicker #picker></mat-datepicker>
+    <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle> -->
+    <input [matDatepicker]="picker" disabled>
   </div>
 
 </form>

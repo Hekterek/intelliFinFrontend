@@ -3,11 +3,15 @@ import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { account } from 'src/app/models/accountModels';
 import { EditDescriptionComponent } from '../editDescription/editDescription.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @Component({
   selector: 'app-recharge',
   templateUrl: './recharge.component.html',
   styleUrls: ['./recharge.component.scss'],
+  providers: [
+    // {provide: MAT_DATE_LOCALE, MAT_}
+  ],
 })
 export class RechargeComponent implements OnInit {
   transactionForm = this.fb.group({
@@ -25,7 +29,6 @@ export class RechargeComponent implements OnInit {
   ) {
     this.transactionForm.controls.id.setValue(data.id);
     this.transactionForm.controls.accountName.setValue(data.name);
-    console.log(data);
   }
 
   ngOnInit() {}
@@ -70,5 +73,9 @@ export class RechargeComponent implements OnInit {
         this.transactionForm.controls.notes.setValue(data.desc);
       }
     });
+  }
+
+  openDatepicker(event: Event) {
+    event.preventDefault();
   }
 }

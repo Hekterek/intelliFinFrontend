@@ -14,6 +14,10 @@ import { SetAccountIconDialogComponent } from './accounts/dialogs/setAccountIcon
 import { SetAccountColorComponent } from './accounts/dialogs/setAccountColor/setAccountColor.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RechargeComponent } from './accounts/dialogs/recharge/recharge.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,12 @@ import { RechargeComponent } from './accounts/dialogs/recharge/recharge.componen
     SetAccountColorComponent,
     RechargeComponent,
   ],
-  imports: [CommonModule, ReactiveFormsModule, MatProgressSpinnerModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
+  ],
 })
 export class MainPagesModule {}
