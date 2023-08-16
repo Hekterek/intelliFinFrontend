@@ -10,6 +10,8 @@ import { AppLayoutModule } from './app-layout/app-layout.module';
 import { HttpClientModule } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ConfirmDialogComponent } from './globalDialogs/confirmDialog/confirmDialog.component';
+import { MomentDateModule } from '@angular/material-moment-adapter';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 
 @NgModule({
   declarations: [AppComponent, ConfirmDialogComponent],
@@ -23,8 +25,9 @@ import { ConfirmDialogComponent } from './globalDialogs/confirmDialog/confirmDia
     MatDialogModule,
     HttpClientModule,
     MatProgressSpinnerModule,
+    MomentDateModule,
   ],
-  providers: [],
+  providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-EN' }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

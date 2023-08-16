@@ -1,9 +1,9 @@
 <form class="container">
 
-  <div class="account" [style.backgroundColor]="data.color">
-    <p class="accountName">{{ data.name }}</p>
+  <div class="account" [style.backgroundColor]="_data.color">
+    <p class="accountName">{{ _data.name }}</p>
     <div class="bgIcon">
-      <img src="./assets/icons/backspace.svg" alt="">
+      <img [src]="_data.icon" alt="Account icon">
     </div>
   </div>
 
@@ -67,8 +67,6 @@
   </div>
 
   <div class="dateContainer">
-    <!-- <mat-datepicker #picker></mat-datepicker>
-    <mat-datepicker-toggle [for]="picker"></mat-datepicker-toggle> -->
     <input [matDatepicker]="picker" disabled>
   </div>
 
