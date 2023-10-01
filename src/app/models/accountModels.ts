@@ -21,3 +21,11 @@ export interface addAccount {
 export interface accountId {
   id: number;
 }
+
+export interface rechargeAccount {
+  id: number;
+  accountName: string;
+  amount: string;
+  notes: string;
+  date: Date;
+}

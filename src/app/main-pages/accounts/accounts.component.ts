@@ -26,7 +26,7 @@ export class AccountsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getAllAccounts();
-    this.openRechargeDialog(this.mainAccount[0]);
+    // this.openRechargeDialog(this.mainAccount[0]);
   }
 
   getAllAccounts() {

@@ -52,7 +52,7 @@
     <button class="btn btn-3" (click)="addNumber('3', $event)">
       <p>3</p>
     </button>
-    <button class="btn btn-done">
+    <button class="btn btn-done" (click)="saveRecharge($event)">
       <img src="./assets/icons/check.svg" alt="done">
     </button>
     <button class="btn btn-00" (click)="addNumber('00', $event)">
@@ -67,7 +67,8 @@
   </div>
 
   <div class="dateContainer">
-    <input [matDatepicker]="picker" disabled>
+    <input class="displayNone" [matDatepicker]="picker" [formControl]="selectedDate">
+    <p>{{ transactionForm.controls.date.value | date: "dd MMM yyyy" }}</p>
   </div>
 
 </form>

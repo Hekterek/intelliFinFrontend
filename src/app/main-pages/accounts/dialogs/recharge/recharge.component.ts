@@ -1,19 +1,11 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormControl } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
-import { account } from 'src/app/models/accountModels';
+import { account, rechargeAccount } from 'src/app/models/accountModels';
 import { EditDescriptionComponent } from '../editDescription/editDescription.component';
-import {
-  MAT_MOMENT_DATE_FORMATS,
-  MomentDateAdapter,
-  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
-} from '@angular/material-moment-adapter';
-import {
-  DateAdapter,
-  MAT_DATE_FORMATS,
-  MAT_DATE_LOCALE,
-} from '@angular/material/core';
-import { monthsEN } from 'src/app/data/months';
+import { MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { AccountService } from 'src/app/services/Account.service';
 
 @Component({
   selector: 'app-recharge',
@@ -27,33 +19,32 @@ export class RechargeComponent implements OnInit {
     accountName: [''],
     amount: ['0'],
     notes: [''],
-    date: [''],
+    date: [new Date()],
   });
 
-  currentDate: Date = new Date();
-
-  dateShow: any;
+  selectedDate = new FormControl();
 
   constructor(
     @Inject(MAT_DIALOG_DATA) protected _data: account,
     private fb: FormBuilder,
-    private dialog: MatDialog
-  ) {
-    this.transactionForm.controls.id.setValue(_data.id);
-    this.transactionForm.controls.accountName.setValue(_data.name);
-  }
+    private dialog: MatDialog,
+    private accountService: AccountService
+  ) {}
 
   ngOnInit() {
-    this.dateShow = `${this.currentDate.getDate()} ${
-      monthsEN[this.currentDate.getMonth()]
-    } ${this.currentDate.getFullYear()}`;
+    this.transactionForm.controls.id.setValue(this._data.id);
+    this.transactionForm.controls.accountName.setValue(this._data.name);
   }
 
   addNumber(num: string, event: Event) {
     event.preventDefault();
-    this.transactionForm.controls.amount.setValue(
-      this.transactionForm.controls.amount.value + num
-    );
+    if (this.transactionForm.controls.amount.value == '0') {
+      this.transactionForm.controls.amount.setValue(num);
+    } else {
+      this.transactionForm.controls.amount.setValue(
+        this.transactionForm.controls.amount.value + num
+      );
+    }
   }
 
   removeLastNumber(event: Event) {
@@ -61,10 +52,12 @@ export class RechargeComponent implements OnInit {
     const amount = this.transactionForm.controls['amount'].value;
 
     if (amount !== null && amount !== '0') {
-      const amountArr = amount.split('');
+      let amountArr = amount.split('');
       if (amountArr[amountArr.length - 1] === '.') {
         amountArr.pop();
         amountArr.pop();
+      } else if (amountArr.length == 1) {
+        amountArr = ['0'];
       } else {
         amountArr.pop();
       }
@@ -93,5 +86,18 @@ export class RechargeComponent implements OnInit {
 
   openDatepicker(event: Event) {
     event.preventDefault();
+  }
+
+  saveRecharge(event: Event) {
+    event.preventDefault();
+    const data = this.transactionForm.value as rechargeAccount;
+
+    // console.log(this.selectedDate.value);
+
+    if (this.selectedDate == null) {
+      this.accountService.rechargeAccount(data);
+    } else {
+      console.log(this.selectedDate);
+    }
   }
 }
