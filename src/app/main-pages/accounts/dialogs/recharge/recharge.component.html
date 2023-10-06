@@ -1,4 +1,4 @@
-<form class="container">
+<form class="container" [formGroup]="transactionForm">
 
   <div class="account" [style.backgroundColor]="_data.color">
     <p class="accountName">{{ _data.name }}</p>
@@ -67,7 +67,7 @@
   </div>
 
   <div class="dateContainer">
-    <input class="displayNone" [matDatepicker]="picker" [formControl]="selectedDate">
+    <input class="displayNone" [matDatepicker]="picker" formControlName="date">
     <p>{{ transactionForm.controls.date.value | date: "dd MMM yyyy" }}</p>
   </div>
 

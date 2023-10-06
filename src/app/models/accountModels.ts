@@ -28,4 +28,5 @@ export interface rechargeAccount {
   amount: string;
   notes: string;
   date: Date;
+  transactionType: string;
 }

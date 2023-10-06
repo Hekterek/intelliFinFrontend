@@ -20,6 +20,7 @@ export class RechargeComponent implements OnInit {
     amount: ['0'],
     notes: [''],
     date: [new Date()],
+    transactionType: 'recharge',
   });
 
   selectedDate = new FormControl();
@@ -91,13 +92,16 @@ export class RechargeComponent implements OnInit {
   saveRecharge(event: Event) {
     event.preventDefault();
     const data = this.transactionForm.value as rechargeAccount;
+    data.date = new Date(data.date);
 
-    // console.log(this.selectedDate.value);
-
-    if (this.selectedDate == null) {
-      this.accountService.rechargeAccount(data);
-    } else {
-      console.log(this.selectedDate);
-    }
+    this.accountService.rechargeAccount(data).subscribe({
+      next(value) {
+        console.log(value);
+      },
+      error(err) {
+        console.log(err);
+      },
+      complete() {},
+    });
   }
 }
