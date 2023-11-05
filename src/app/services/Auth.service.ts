@@ -1,39 +1,35 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import {
+  HttpClient,
+  HttpErrorResponse,
+  HttpResponse,
+} from '@angular/common/http';
+import { Injectable, OnInit } from '@angular/core';
 import { httpConfig, restApiUrl } from './common';
 import { LoginData } from '../app-layout/models/login';
-import { Observable } from 'rxjs';
+import {
+  Observable,
+  catchError,
+  map,
+  of,
+  BehaviorSubject,
+  throwError,
+  EMPTY,
+} from 'rxjs';
 import { Router } from '@angular/router';
-import { userId } from '../models/userModels';
-import { checkAuth } from '../models/checkAuth';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private checkIfLogged: boolean = false;
-
   constructor(private httpClient: HttpClient, private router: Router) {}
 
-  getCheckIfLogged(): boolean {
-    // return this.checkAuth().subscribe()
-    return this.checkIfLogged.valueOf();
-  }
-
-  setCheckIfLogged(value: boolean) {
-    this.checkIfLogged = value;
-  }
-
-  login(loginData: LoginData): Observable<userId> {
+  login(loginData: LoginData): Observable<void> {
     const body = new FormData();
     body.set('username', loginData.login);
     body.set('password', loginData.password);
     body.set('rememberMe', loginData.rememberMe.toString());
-    return this.httpClient.post<userId>(
-      restApiUrl + '/login',
-      body,
-      httpConfig
-    );
+
+    return this.httpClient.post<void>(restApiUrl + '/login', body, httpConfig);
   }
 
   logout() {
@@ -46,11 +42,19 @@ export class AuthService {
       });
   }
 
-  checkAuth() {
-    this.httpClient
-      .get<checkAuth>(`${restApiUrl}/api/user/checkAuth`, httpConfig)
-      .subscribe((value) => {
-        this.setCheckIfLogged(value.value);
-      });
+  isLoggedIn(): Observable<boolean> {
+    return this.httpClient
+      .get<any>(`${restApiUrl}/api/user/checkAuth`, {
+        observe: 'response',
+        withCredentials: true,
+      })
+      .pipe(
+        map((response) => {
+          return response.status === 200;
+        }),
+        catchError((error) => {
+          return of(false);
+        })
+      );
   }
 }

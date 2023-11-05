@@ -7,25 +7,23 @@ import { MyGoalsComponent } from './main-pages/my-goals/my-goals.component';
 import { LoginPageComponent } from './start-page/login-page/login-page.component';
 import { MainLayoutComponent } from './app-layout/main-layout/main-layout.component';
 import { WelcomePageComponent } from './start-page/welcomePage/welcomePage.component';
-import { AuthGuard } from './guards/auth.guard';
-import { AfterAuthGuard } from './guards/after-auth.guard';
 import { accountResolver } from './services/resolvers/accounts-resolver.resolver';
+import { loginPageGuard } from './guards/login-page-guard.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: WelcomePageComponent,
-    canActivate: [AfterAuthGuard],
   },
   {
     path: 'login',
     component: LoginPageComponent,
-    canActivate: [AfterAuthGuard],
+    canActivate: [loginPageGuard],
   },
   {
     path: 'app',
     component: MainLayoutComponent,
-    canActivateChild: [AuthGuard],
+    canActivateChild: [],
     children: [
       {
         path: '',

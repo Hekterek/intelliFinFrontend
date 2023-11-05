@@ -15,12 +15,11 @@ import { AccountService } from 'src/app/services/Account.service';
 })
 export class RechargeComponent implements OnInit {
   transactionForm = this.fb.group({
-    id: [0],
-    accountName: [''],
+    transactionType: 'recharge',
+    toAccountId: [0],
     amount: ['0'],
     notes: [''],
     date: [new Date()],
-    transactionType: 'recharge',
   });
 
   selectedDate = new FormControl();
@@ -33,8 +32,7 @@ export class RechargeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.transactionForm.controls.id.setValue(this._data.id);
-    this.transactionForm.controls.accountName.setValue(this._data.name);
+    this.transactionForm.controls.toAccountId.setValue(this._data.id);
   }
 
   addNumber(num: string, event: Event) {
@@ -94,14 +92,16 @@ export class RechargeComponent implements OnInit {
     const data = this.transactionForm.value as rechargeAccount;
     data.date = new Date(data.date);
 
-    this.accountService.rechargeAccount(data).subscribe({
-      next(value) {
-        console.log(value);
-      },
-      error(err) {
-        console.log(err);
-      },
-      complete() {},
-    });
+    console.log(data);
+
+    // this.accountService.rechargeAccount(data).subscribe({
+    //   next(value) {
+    //     // console.log(value);
+    //   },
+    //   error(err) {
+    //     console.log(err);
+    //   },
+    //   complete() {},
+    // });
   }
 }
