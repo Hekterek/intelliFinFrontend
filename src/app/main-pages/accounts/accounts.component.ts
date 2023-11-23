@@ -7,6 +7,7 @@ import { AddAccountComponent } from './dialogs/addAccount/addAccount.component';
 import { ActivatedRoute } from '@angular/router';
 import { EditAccountComponent } from './dialogs/editAccount/editAccount.component';
 import { RechargeComponent } from './dialogs/recharge/recharge.component';
+import { TransferComponent } from './dialogs/transfer/transfer.component';
 
 @Component({
   selector: 'app-accounts',
@@ -27,6 +28,7 @@ export class AccountsComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.getAllAccounts();
     // this.openRechargeDialog(this.mainAccount[0]);
+    // this.openTransferDialog(this.mainAccount[0]);
   }
 
   getAllAccounts() {
@@ -54,10 +56,16 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe((option) => {
-      if (option === 'edit') {
-        this.openEditAccountDialog(account);
-      } else if (option === 'recharge') {
-        this.openRechargeDialog(account);
+      switch (option) {
+        case 'edit':
+          this.openEditAccountDialog(account);
+          break;
+        case 'recharge':
+          this.openRechargeDialog(account);
+          break;
+        case 'transfer':
+          this.openTransferDialog(account);
+          break;
       }
     });
   }
@@ -131,7 +139,19 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     });
   }
 
-  updateAccountsAfterTransaction(updatedAccounts: account[]) {
+  openTransferDialog(account: account) {
+    const dialogRef = this.dialog.open(TransferComponent, {
+      position: {
+        bottom: '0',
+        // left: '0',
+      },
+      width: '100%',
+      maxWidth: '100vw',
+      data: account,
+    });
+  }
+
+  private updateAccountsAfterTransaction(updatedAccounts: account[]) {
     updatedAccounts.forEach((updatedAccount) => {
       this.mainAccount.filter((account) => {
         if (account.accountId === updatedAccount.accountId) {

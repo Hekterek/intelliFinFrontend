@@ -34,4 +34,8 @@ export class AccountOptionsComponent implements OnInit {
   openRechargeDialog() {
     this.dialogRef.close('recharge');
   }
+
+  openTransferDialog() {
+    this.dialogRef.close('transfer');
+  }
 }

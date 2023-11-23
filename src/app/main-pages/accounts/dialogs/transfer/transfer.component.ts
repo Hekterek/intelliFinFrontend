@@ -1,32 +1,42 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { map } from 'rxjs';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
-import { account, rechargeAccount } from 'src/app/models/accountModels';
-import { EditDescriptionComponent } from '../editDescription/editDescription.component';
-import { MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
-import { MAT_DATE_FORMATS } from '@angular/material/core';
+import {
+  account,
+  rechargeAccount,
+  transferAccount,
+} from 'src/app/models/accountModels';
 import { AccountService } from 'src/app/services/Account.service';
+import { RechargeComponent } from '../recharge/recharge.component';
+import { EditDescriptionComponent } from '../editDescription/editDescription.component';
+import { MAT_DATE_FORMATS } from '@angular/material/core';
+import { MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
+import { AccountPickerComponent } from '../accountPicker/accountPicker.component';
 
 @Component({
-  selector: 'app-recharge',
-  templateUrl: './recharge.component.html',
-  styleUrls: ['./recharge.component.scss'],
+  selector: 'app-transfer',
+  templateUrl: './transfer.component.html',
+  styleUrls: ['./transfer.component.scss'],
   providers: [{ provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS }],
 })
-export class RechargeComponent implements OnInit {
+export class TransferComponent implements OnInit {
   transactionForm = this.fb.group({
-    transactionType: 'RECHARGE',
+    transactionType: 'TRANSFER',
+    fromAccountId: [0],
     toAccountId: [0],
     amount: ['0'],
     notes: [''],
     date: [new Date()],
   });
-
   selectedDate = new FormControl();
+
+  fromAccount!: account;
+  toAccount!: account | null;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) protected _data: account,
@@ -37,9 +47,7 @@ export class RechargeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this._data.accountId);
-
-    this.transactionForm.controls.toAccountId.setValue(this._data.accountId);
+    this.fromAccount = this._data;
   }
 
   addNumber(num: string, event: Event) {
@@ -90,19 +98,47 @@ export class RechargeComponent implements OnInit {
     });
   }
 
+  openFromAccountPicker() {
+    let accounts: account[] = [];
+    this.accountService
+      .getAllAccounts()
+      .subscribe((accountsFromDB: account[]) => {
+        // if(this.toAccount != null) {
+        accounts = accountsFromDB.filter(
+          (account: account) => account.accountId !== this.toAccount?.accountId
+        );
+        // }
+        console.log(accounts);
+
+        const transferDialogRef = this.dialog.open(AccountPickerComponent, {
+          data: accounts,
+        });
+      });
+  }
+
+  openToAccountPicker() {
+    let accounts: account[] = [];
+    this.accountService
+      .getAllAccounts()
+      .subscribe((accountsFromDB: account[]) => {
+        accounts = accountsFromDB.filter(
+          (account: account) => account.accountId !== this.fromAccount.accountId
+        );
+        const transferDialogRef = this.dialog.open(AccountPickerComponent, {
+          data: accounts,
+        });
+      });
+  }
+
   openDatepicker(event: Event) {
     event.preventDefault();
   }
 
-  saveRecharge(event: Event) {
+  saveTransfer(event: Event) {
     event.preventDefault();
-    const data = this.transactionForm.value as rechargeAccount;
+    const data = this.transactionForm.value as transferAccount;
     data.date = new Date(data.date);
 
     console.log(data);
-
-    this.accountService.rechargeAccount(data).subscribe((updatedAccounts) => {
-      this.rechargeDialogRef.close(updatedAccounts);
-    });
   }
 }

@@ -16,6 +16,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RechargeComponent } from './accounts/dialogs/recharge/recharge.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { TransferComponent } from './accounts/dialogs/transfer/transfer.component';
+import { AccountPickerComponent } from './accounts/dialogs/accountPicker/accountPicker.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     SetAccountIconDialogComponent,
     SetAccountColorComponent,
     RechargeComponent,
+    TransferComponent,
+    AccountPickerComponent,
   ],
   imports: [
     CommonModule,
