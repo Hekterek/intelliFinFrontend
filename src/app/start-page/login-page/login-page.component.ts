@@ -10,9 +10,19 @@ import { AuthService } from 'src/app/services/Auth.service';
   styleUrls: ['./login-page.component.scss'],
 })
 export class LoginPageComponent {
+  emailPattern: RegExp = /^[a-zd]+[w.-]*@[a-zd]+[a-zd-]*.[a-z]{2,63}$/i;
+  formError: String = '';
+
   form = this.fb.group({
-    login: ['', [Validators.required, Validators.minLength(5)]],
-    password: ['', [Validators.required, Validators.minLength(5)]],
+    login: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(5),
+        Validators.pattern(this.emailPattern),
+      ],
+    ],
+    password: ['', [Validators.required, Validators.minLength(8)]],
     rememberMe: false,
   });
 
@@ -23,12 +33,16 @@ export class LoginPageComponent {
   ) {}
 
   login() {
-    const loginData = this.form.value as LoginData;
+    if (this.form.status == 'INVALID') {
+      this.formError = 'Bad credentials';
+    } else {
+      const loginData = this.form.value as LoginData;
 
-    this.authService.login(loginData).subscribe({
-      next: () => {
-        this.router.navigate(['/app/categories']);
-      },
-    });
+      this.authService.login(loginData).subscribe({
+        next: () => {
+          this.router.navigate(['/app/categories']);
+        },
+      });
+    }
   }
 }

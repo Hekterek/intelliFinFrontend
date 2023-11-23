@@ -1,11 +1,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialog,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { account, rechargeAccount } from 'src/app/models/accountModels';
 import { EditDescriptionComponent } from '../editDescription/editDescription.component';
 import { MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { AccountService } from 'src/app/services/Account.service';
+import { DialogRef } from '@angular/cdk/dialog';
 
 @Component({
   selector: 'app-recharge',
@@ -15,7 +20,7 @@ import { AccountService } from 'src/app/services/Account.service';
 })
 export class RechargeComponent implements OnInit {
   transactionForm = this.fb.group({
-    transactionType: 'recharge',
+    transactionType: 'RECHARGE',
     toAccountId: [0],
     amount: ['0'],
     notes: [''],
@@ -28,11 +33,14 @@ export class RechargeComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) protected _data: account,
     private fb: FormBuilder,
     private dialog: MatDialog,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private rechargeDialogRef: MatDialogRef<RechargeComponent>
   ) {}
 
   ngOnInit() {
-    this.transactionForm.controls.toAccountId.setValue(this._data.id);
+    console.log(this._data.accountId);
+
+    this.transactionForm.controls.toAccountId.setValue(this._data.accountId);
   }
 
   addNumber(num: string, event: Event) {
@@ -94,14 +102,8 @@ export class RechargeComponent implements OnInit {
 
     console.log(data);
 
-    // this.accountService.rechargeAccount(data).subscribe({
-    //   next(value) {
-    //     // console.log(value);
-    //   },
-    //   error(err) {
-    //     console.log(err);
-    //   },
-    //   complete() {},
-    // });
+    this.accountService.rechargeAccount(data).subscribe((updatedAccounts) => {
+      this.rechargeDialogRef.close(updatedAccounts);
+    });
   }
 }

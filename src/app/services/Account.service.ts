@@ -26,8 +26,10 @@ export class AccountService {
   }
 
   updateAccount(editedAccount: account): Observable<account> {
+    console.log(editedAccount);
+
     return this.httpClient.put<account>(
-      `${restApiUrl}/api/account`,
+      `${restApiUrl}/api/account/${editedAccount.accountId}`,
       editedAccount,
       httpConfig
     );
@@ -41,7 +43,7 @@ export class AccountService {
   }
 
   rechargeAccount(formData: rechargeAccount) {
-    return this.httpClient.post<void>(
+    return this.httpClient.post<account[]>(
       `${restApiUrl}/api/transaction`,
       formData,
       httpConfig

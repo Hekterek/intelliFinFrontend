@@ -1,5 +1,6 @@
 <div class="container">
     <form class="form" [formGroup]="form" (ngSubmit)="login()">
+        <div>{{ formError }}</div>
         <input placeholder="login" [formControl]="form.controls.login">
         <input placeholder="password" [formControl]="form.controls.password" type="password">
         <div>
@@ -9,4 +10,3 @@
         <button>Login</button>
     </form>
 </div>
-<!-- <mat-spinner></mat-spinner> -->

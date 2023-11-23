@@ -20,11 +20,11 @@ import { ConfirmDialogComponent } from 'src/app/globalDialogs/confirmDialog/conf
 })
 export class EditAccountComponent implements OnInit {
   editedAccount = this.fb.group({
-    id: [0],
-    name: [''],
-    description: [''],
-    icon: [''],
-    color: [''],
+    accountId: [0],
+    name: [' '],
+    description: [' '],
+    icon: [' '],
+    color: [' '],
     amount: [0],
     includeTotal: [false],
     mainAccount: [false],
@@ -46,7 +46,7 @@ export class EditAccountComponent implements OnInit {
   }
 
   buildForm() {
-    this.editedAccount.controls.id.setValue(this.data.id);
+    this.editedAccount.controls.accountId.setValue(this.data.accountId);
     this.editedAccount.controls.name.setValue(this.data.name);
     this.editedAccount.controls.description.setValue(this.data.description);
     this.editedAccount.controls.icon.setValue(this.data.icon);

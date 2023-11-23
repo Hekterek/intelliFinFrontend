@@ -1,5 +1,5 @@
 export interface account {
-  id: number;
+  accountId: number;
   name: string;
   description: string | null;
   icon: string | null;
@@ -19,7 +19,7 @@ export interface addAccount {
 }
 
 export interface accountId {
-  id: number;
+  accountId: number;
 }
 
 export interface rechargeAccount {

@@ -96,19 +96,19 @@ export class AccountsComponent implements OnInit, AfterViewInit {
 
       if (data !== undefined && data !== true) {
         this.accountService.updateAccount(data).subscribe((editedAccount) => {
-          if (this.mainAccount[0].id === editedAccount.id) {
+          if (this.mainAccount[0].accountId === editedAccount.accountId) {
             this.mainAccount[0] = editedAccount;
           } else {
             const index = this.personalAccounts.findIndex(
-              (acc) => editedAccount.id === acc.id
+              (acc) => editedAccount.accountId === acc.accountId
             );
             this.personalAccounts[index] = editedAccount;
           }
         });
       } else if (data === true) {
-        this.accountService.removeAccount(account.id).subscribe(() => {
+        this.accountService.removeAccount(account.accountId).subscribe(() => {
           this.personalAccounts = this.personalAccounts.filter(
-            (el) => el.id !== account.id
+            (el) => el.accountId !== account.accountId
           );
         });
       }
@@ -116,7 +116,7 @@ export class AccountsComponent implements OnInit, AfterViewInit {
   }
 
   openRechargeDialog(account: account) {
-    this.dialog.open(RechargeComponent, {
+    const dialogRef = this.dialog.open(RechargeComponent, {
       position: {
         bottom: '0',
         // left: '0',
@@ -124,6 +124,25 @@ export class AccountsComponent implements OnInit, AfterViewInit {
       width: '100%',
       maxWidth: '100vw',
       data: account,
+    });
+
+    dialogRef.afterClosed().subscribe((updatedAccounts: account[]) => {
+      this.updateAccountsAfterTransaction(updatedAccounts);
+    });
+  }
+
+  updateAccountsAfterTransaction(updatedAccounts: account[]) {
+    updatedAccounts.forEach((updatedAccount) => {
+      this.mainAccount.filter((account) => {
+        if (account.accountId === updatedAccount.accountId) {
+          account.amount = updatedAccount.amount;
+        }
+      });
+      this.personalAccounts.filter((account) => {
+        if (account.accountId === updatedAccount.accountId) {
+          account.amount = updatedAccount.amount;
+        }
+      });
     });
   }
 }
