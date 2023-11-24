@@ -43,11 +43,12 @@ export class TransferComponent implements OnInit {
     private fb: FormBuilder,
     private dialog: MatDialog,
     private accountService: AccountService,
-    private rechargeDialogRef: MatDialogRef<RechargeComponent>
+    private transferDialogRef: MatDialogRef<TransferComponent>
   ) {}
 
   ngOnInit() {
     this.fromAccount = this._data;
+    // this.openToAccountPicker();
   }
 
   addNumber(num: string, event: Event) {
@@ -99,24 +100,26 @@ export class TransferComponent implements OnInit {
   }
 
   openFromAccountPicker() {
+    let transferDialogRef: MatDialogRef<AccountPickerComponent>;
     let accounts: account[] = [];
     this.accountService
       .getAllAccounts()
       .subscribe((accountsFromDB: account[]) => {
-        // if(this.toAccount != null) {
         accounts = accountsFromDB.filter(
           (account: account) => account.accountId !== this.toAccount?.accountId
         );
-        // }
-        console.log(accounts);
-
-        const transferDialogRef = this.dialog.open(AccountPickerComponent, {
+        transferDialogRef = this.dialog.open(AccountPickerComponent, {
           data: accounts,
+        });
+
+        transferDialogRef.afterClosed().subscribe((account: account) => {
+          this.fromAccount = account;
         });
       });
   }
 
   openToAccountPicker() {
+    let transferDialogRef: MatDialogRef<AccountPickerComponent>;
     let accounts: account[] = [];
     this.accountService
       .getAllAccounts()
@@ -124,8 +127,12 @@ export class TransferComponent implements OnInit {
         accounts = accountsFromDB.filter(
           (account: account) => account.accountId !== this.fromAccount.accountId
         );
-        const transferDialogRef = this.dialog.open(AccountPickerComponent, {
+        transferDialogRef = this.dialog.open(AccountPickerComponent, {
           data: accounts,
+        });
+
+        transferDialogRef.afterClosed().subscribe((account: account) => {
+          this.toAccount = account;
         });
       });
   }
@@ -138,7 +145,15 @@ export class TransferComponent implements OnInit {
     event.preventDefault();
     const data = this.transactionForm.value as transferAccount;
     data.date = new Date(data.date);
+    data.fromAccountId = this.fromAccount.accountId;
+    data.toAccountId = this.toAccount?.accountId;
 
-    console.log(data);
+    if (data.toAccountId != 0 && data.toAccountId != undefined) {
+      this.accountService
+        .transferFromToAccount(data)
+        .subscribe((accounts: account[]) => {
+          this.transferDialogRef.close(accounts);
+        });
+    }
   }
 }

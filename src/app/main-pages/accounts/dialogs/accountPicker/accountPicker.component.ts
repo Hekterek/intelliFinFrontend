@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { account } from 'src/app/models/accountModels';
 
 @Component({
@@ -8,7 +8,16 @@ import { account } from 'src/app/models/accountModels';
   styleUrls: ['./accountPicker.component.scss'],
 })
 export class AccountPickerComponent implements OnInit {
-  constructor(@Inject(MAT_DIALOG_DATA) protected data: account[]) {}
+  constructor(
+    @Inject(MAT_DIALOG_DATA) protected data: account[],
+    private dialogRef: MatDialogRef<AccountPickerComponent>
+  ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.data);
+  }
+
+  closeDialogAndPasschosedAccount(account: account) {
+    this.dialogRef.close(account);
+  }
 }

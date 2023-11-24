@@ -1,5 +1,14 @@
 <div class="accountsContainer">
-  <div class="account">
-
+  <header>
+    <p>Choose account</p>
+  </header>
+  <div class="account" *ngFor="let account of data" (click)="closeDialogAndPasschosedAccount(account)">
+    <div class="bgIcon">
+      <img [src]="account.icon" alt="Account icon">
+    </div>
+    <div class="infoBox">
+      <p>{{ account.name }}</p>
+      <p class="amount">{{ '€ ' + (account.amount | number: '1.2-2') }}</p>
+    </div>
   </div>
 </div>

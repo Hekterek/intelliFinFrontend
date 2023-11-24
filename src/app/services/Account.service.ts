@@ -2,7 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { httpConfig, restApiUrl } from './common';
 import { Observable } from 'rxjs';
-import { account, addAccount, rechargeAccount } from '../models/accountModels';
+import {
+  account,
+  addAccount,
+  rechargeAccount,
+  transferAccount,
+} from '../models/accountModels';
 
 @Injectable({
   providedIn: 'root',
@@ -43,6 +48,14 @@ export class AccountService {
   }
 
   rechargeAccount(formData: rechargeAccount) {
+    return this.httpClient.post<account[]>(
+      `${restApiUrl}/api/transaction`,
+      formData,
+      httpConfig
+    );
+  }
+
+  transferFromToAccount(formData: transferAccount) {
     return this.httpClient.post<account[]>(
       `${restApiUrl}/api/transaction`,
       formData,

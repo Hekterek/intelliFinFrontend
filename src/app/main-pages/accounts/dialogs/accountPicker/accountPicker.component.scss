@@ -1,0 +1,54 @@
+@use "../../../../../modulesScss" as *;
+
+.accountsContainer {
+  width: 280px;
+  min-height: 150px;
+  border-radius: 10px;
+  background-color: $bg-white;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(207, 207, 207, 0.555);
+}
+
+.account {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 70px;
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  //   border: 1px solid red;
+}
+
+.bgIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: rgb(207, 207, 207);
+  // border: 1px solid red;
+
+  & img {
+    width: 22px;
+  }
+}
+
+.infoBox {
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  //   border: 1px solid blue;
+}
+
+.amount {
+}

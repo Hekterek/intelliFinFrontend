@@ -149,6 +149,10 @@ export class AccountsComponent implements OnInit, AfterViewInit {
       maxWidth: '100vw',
       data: account,
     });
+
+    dialogRef.afterClosed().subscribe((accounts: account[]) => {
+      this.updateAccountsAfterTransaction(accounts);
+    });
   }
 
   private updateAccountsAfterTransaction(updatedAccounts: account[]) {

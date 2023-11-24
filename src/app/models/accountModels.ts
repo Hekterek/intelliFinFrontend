@@ -32,7 +32,7 @@ export interface rechargeAccount {
 
 export interface transferAccount {
   fromAccountId: number;
-  toAccountId: number;
+  toAccountId: number | undefined;
   amount: string;
   notes: string;
   date: Date;
