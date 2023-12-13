@@ -1,3 +1,9 @@
 <div class="container">
-
+    <div class="transactionBox">
+        <div class="header">
+            <button class="sign" (click)="decreaseMonth()">&lt;</button>
+            <div>{{ date | date: " MMM yyyy" }}</div>
+            <button class="sign" (click)="increaseMonth()">&gt;</button>
+        </div>
+    </div>
 </div>

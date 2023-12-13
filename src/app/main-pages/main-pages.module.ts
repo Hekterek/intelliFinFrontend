@@ -5,7 +5,7 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { MyGoalsComponent } from './my-goals/my-goals.component';
 import { AccountOptionsComponent } from './accounts/dialogs/accountOptions/accountOptions.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddAccountComponent } from './accounts/dialogs/addAccount/addAccount.component';
 import { EditAccountComponent } from './accounts/dialogs/editAccount/editAccount.component';
 import { EditNameComponent } from './accounts/dialogs/editName/editName.component';
@@ -43,6 +43,7 @@ import { AccountPickerComponent } from './accounts/dialogs/accountPicker/account
     MatProgressSpinnerModule,
     MatNativeDateModule,
     MatDatepickerModule,
+    FormsModule,
   ],
 })
 export class MainPagesModule {}
