@@ -5,5 +5,22 @@
             <div>{{ date | date: " MMM yyyy" }}</div>
             <button class="sign" (click)="increaseMonth()">&gt;</button>
         </div>
+        <div class="transactionListContainer">
+            <ng-container *ngFor="let dateTab of getCategorizedTransactionsKeys()">
+                <div class="box" *ngFor="let transaction of categorizedTransactions[dateTab]">
+                    <div class="dateTab">
+                        <!-- <p>{{ transaction.date | date: 'dd MMMM yyyy' }}</p> -->
+                        <p>
+                            <span [ngStyle]="{'font-size': '1.9rem'}">{{ getDayOfWeekFromIsoString(transaction)
+                                }}</span>
+                            {{ transaction.date | date:'MMMM yyyy' }}
+                        </p>
+                    </div>
+                    <div class="transactionBox">
+
+                    </div>
+                </div>
+            </ng-container>
+        </div>
     </div>
 </div>
