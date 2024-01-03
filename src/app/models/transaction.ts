@@ -1,8 +1,10 @@
+import { account } from './accountModels';
+
 export interface transactionFromDB {
   transactionId: number;
   transactionType: string;
-  fromAccountId: number | null;
-  toAccountId: number;
+  fromAccount: account | null;
+  toAccount: account;
   amount: number;
   date: string;
   userId: number;

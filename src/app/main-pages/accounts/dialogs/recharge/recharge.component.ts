@@ -99,8 +99,6 @@ export class RechargeComponent implements OnInit {
     const data = this.transactionForm.value as rechargeAccount;
     data.date = new Date(data.date);
 
-    console.log(data);
-
     this.accountService.rechargeAccount(data).subscribe((updatedAccounts) => {
       this.rechargeDialogRef.close(updatedAccounts);
     });

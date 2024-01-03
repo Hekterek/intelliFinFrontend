@@ -30,12 +30,14 @@ export class TransactionsComponent implements OnInit, OnDestroy {
     const newDate = new Date(this.date);
     newDate.setMonth(this.date.getMonth() + 1);
     this.date = newDate;
+    this.loadTransactionsFromDB(this.date);
   }
 
   decreaseMonth(): void {
     const newDate = new Date(this.date);
     newDate.setMonth(this.date.getMonth() - 1);
     this.date = newDate;
+    this.loadTransactionsFromDB(this.date);
   }
 
   loadTransactionsFromDB(date: Date): void {
@@ -47,15 +49,21 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   }
 
   private prepareTransactionsForDisplay(data: transactionFromDB[]) {
-    data.forEach((transaction) => {
-      const transactionDate = new Date(transaction.date).toISOString();
+    this.categorizedTransactions = {};
+    data.forEach((transaction: transactionFromDB) => {
+      let transactionDate: Date = new Date(transaction.date);
+      transactionDate.setHours(1, 0, 0, 0);
+      const stringDate = transactionDate.toISOString();
+      console.log(stringDate);
 
-      if (!this.categorizedTransactions[transactionDate]) {
-        this.categorizedTransactions[transactionDate] = [];
+      if (!this.categorizedTransactions[stringDate]) {
+        this.categorizedTransactions[stringDate] = [];
       }
 
-      this.categorizedTransactions[transactionDate].push(transaction);
+      this.categorizedTransactions[stringDate].push(transaction);
     });
+
+    console.log(this.categorizedTransactions);
   }
 
   getCategorizedTransactionsKeys(): string[] {

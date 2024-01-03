@@ -48,8 +48,10 @@ export class AccountService {
   }
 
   rechargeAccount(formData: rechargeAccount) {
+    console.log(formData);
+
     return this.httpClient.post<account[]>(
-      `${restApiUrl}/api/transaction`,
+      `${restApiUrl}/api/transaction/recharge`,
       formData,
       httpConfig
     );
@@ -57,7 +59,7 @@ export class AccountService {
 
   transferFromToAccount(formData: transferAccount) {
     return this.httpClient.post<account[]>(
-      `${restApiUrl}/api/transaction`,
+      `${restApiUrl}/api/transaction/transfer`,
       formData,
       httpConfig
     );
