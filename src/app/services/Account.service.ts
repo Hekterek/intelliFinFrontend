@@ -58,6 +58,8 @@ export class AccountService {
   }
 
   transferFromToAccount(formData: transferAccount) {
+    console.log(formData);
+
     return this.httpClient.post<account[]>(
       `${restApiUrl}/api/transaction/transfer`,
       formData,

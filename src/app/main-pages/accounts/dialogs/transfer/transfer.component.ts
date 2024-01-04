@@ -27,8 +27,8 @@ import { AccountPickerComponent } from '../accountPicker/accountPicker.component
 export class TransferComponent implements OnInit {
   transactionForm = this.fb.group({
     transactionType: 'TRANSFER',
-    fromAccount: [0],
-    toAccount: [0],
+    fromAccountId: [0],
+    toAccountId: [0],
     amount: ['0'],
     notes: [''],
     date: [new Date()],
@@ -145,10 +145,10 @@ export class TransferComponent implements OnInit {
     event.preventDefault();
     const data = this.transactionForm.value as transferAccount;
     data.date = new Date(data.date);
-    data.fromAccount = this.fromAccount.accountId;
-    data.toAccount = this.toAccount?.accountId;
+    data.fromAccountId = this.fromAccount.accountId;
+    data.toAccountId = this.toAccount?.accountId;
 
-    if (data.toAccount != 0 && data.toAccount != undefined) {
+    if (data.toAccountId != 0 && data.toAccountId != undefined) {
       this.accountService
         .transferFromToAccount(data)
         .subscribe((accounts: account[]) => {
