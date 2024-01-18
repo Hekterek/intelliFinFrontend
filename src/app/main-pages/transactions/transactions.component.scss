@@ -6,6 +6,9 @@
 }
 
 .transactionContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   width: 100%;
   height: 100%;
@@ -28,9 +31,15 @@
 }
 
 .transactionListContainer {
-  width: 100%;
-  height: 90%;
+  width: min(100%, 450px);
+  height: 100%;
   overflow-y: auto;
+
+  @include mod.screen500 {
+    height: 80%;
+    box-shadow: 0 0 13px 0px rgba(128, 128, 128, 0.568);
+    background-color: rgba(156, 155, 155, 0.24);
+  }
 }
 
 .dayContainer {
@@ -61,9 +70,6 @@
   & .infoContainer {
     margin-left: 15px;
     line-height: 1.1rem;
-
-    & .toAccount {
-    }
 
     & .fromAccount {
       margin-left: 7px;

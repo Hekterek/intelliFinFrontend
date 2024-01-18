@@ -10,13 +10,14 @@
 
 .box {
   position: relative;
-  width: 100%;
+  width: min(100%, 450px);
   height: 100%;
   transition: opacity 0.4s;
   overflow: hidden;
+  border: 1px solid red;
 
   @include mod.screen500 {
-    width: 450px;
+    // width: 450px;
     height: 80%;
     box-shadow: 0 0 13px 0px rgba(128, 128, 128, 0.568);
     background-color: rgba(156, 155, 155, 0.24);

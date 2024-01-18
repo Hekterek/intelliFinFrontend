@@ -1,11 +1,11 @@
 <div class="container">
     <div class="transactionContainer">
-        <div class="header">
-            <button class="sign" (click)="decreaseMonth()">&lt;</button>
-            <div>{{ date | date: " MMM yyyy" }}</div>
-            <button class="sign" (click)="increaseMonth()">&gt;</button>
-        </div>
         <div class="transactionListContainer">
+            <div class="header">
+                <button class="sign" (click)="decreaseMonth()">&lt;</button>
+                <div>{{ date | date: " MMM yyyy" }}</div>
+                <button class="sign" (click)="increaseMonth()">&gt;</button>
+            </div>
             <ng-container *ngFor="let dateTab of getCategorizedTransactionsKeys()">
                 <div class="dayTab">
                     <p>

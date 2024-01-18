@@ -27,8 +27,6 @@ export class AccountsComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getAllAccounts();
-    // this.openRechargeDialog(this.mainAccount[0]);
-    // this.openTransferDialog(this.mainAccount[0]);
   }
 
   getAllAccounts() {
@@ -135,7 +133,9 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe((updatedAccounts: account[]) => {
-      this.updateAccountsAfterTransaction(updatedAccounts);
+      if (updatedAccounts !== undefined) {
+        this.updateAccountsAfterTransaction(updatedAccounts);
+      }
     });
   }
 
@@ -151,7 +151,9 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe((accounts: account[]) => {
-      this.updateAccountsAfterTransaction(accounts);
+      if (accounts !== undefined) {
+        this.updateAccountsAfterTransaction(accounts);
+      }
     });
   }
 
