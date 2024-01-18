@@ -52,38 +52,6 @@
   }
 }
 
-// .account {
-//   display: flex;
-//   position: relative;
-//   height: 45px;
-//   width: 100%;
-//   border-bottom: 2px solid gray;
-//   // border: 1px solid red;
-
-//   & .accountName {
-//     margin: auto 0 auto 30px;
-//     font-size: 18px;
-//   }
-
-//   & .bgIcon {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     position: absolute;
-//     right: 50px;
-//     top: -25px;
-//     width: 50px;
-//     height: 50px;
-//     border-radius: 50%;
-//     background-color: rgb(207, 207, 207);
-//     // border: 1px solid red;
-
-//     & img {
-//       width: 25px;
-//     }
-//   }
-// }
-
 .amountContainer {
   display: flex;
   flex-direction: column;

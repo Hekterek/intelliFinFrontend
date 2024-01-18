@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { CategoriesComponent } from './categories/categories.component';
 import { AccountsComponent } from './accounts/accounts.component';
 import { TransactionsComponent } from './transactions/transactions.component';
-import { MyGoalsComponent } from './my-goals/my-goals.component';
 import { AccountOptionsComponent } from './accounts/dialogs/accountOptions/accountOptions.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddAccountComponent } from './accounts/dialogs/addAccount/addAccount.component';
@@ -25,7 +24,6 @@ import { AccountPickerComponent } from './accounts/dialogs/accountPicker/account
     AccountsComponent,
     CategoriesComponent,
     TransactionsComponent,
-    MyGoalsComponent,
     AccountOptionsComponent,
     AddAccountComponent,
     EditAccountComponent,

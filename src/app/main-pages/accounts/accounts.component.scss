@@ -6,14 +6,9 @@
   align-items: center;
   width: min(100%, 1700px);
   height: calc(100vh - 170px);
-
-  @include mod.screen900 {
-    height: calc(100vh - 61px);
-  }
 }
 
 .box {
-  // border: 1px solid red;
   position: relative;
   width: 100%;
   height: 100%;
@@ -23,8 +18,6 @@
   @include mod.screen500 {
     width: 450px;
     height: 80%;
-    // border: 2px solid gray;
-    // border-radius: 10px;
     box-shadow: 0 0 13px 0px rgba(128, 128, 128, 0.568);
     background-color: rgba(156, 155, 155, 0.24);
   }
@@ -48,13 +41,6 @@
   height: 65px;
   border-bottom: 1px solid gray;
   transition: background-color 0.3s;
-
-  @include mod.screen900 {
-    &:hover {
-      cursor: pointer;
-      background-color: rgba(156, 155, 155, 0.144);
-    }
-  }
 }
 
 .iconNameContainer {

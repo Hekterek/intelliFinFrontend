@@ -3,10 +3,6 @@
 .container {
   width: 100%;
   height: calc(100vh - 170px);
-
-  @include mod.screen900 {
-    height: calc(100vh - 61px);
-  }
 }
 
 .transactionContainer {

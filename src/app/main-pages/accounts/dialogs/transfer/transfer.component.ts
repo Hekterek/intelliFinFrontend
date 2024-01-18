@@ -1,18 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { map } from 'rxjs';
 import {
   MAT_DIALOG_DATA,
   MatDialog,
   MatDialogRef,
 } from '@angular/material/dialog';
-import {
-  account,
-  rechargeAccount,
-  transferAccount,
-} from 'src/app/models/accountModels';
+import { account, transferAccount } from 'src/app/models/accountModels';
 import { AccountService } from 'src/app/services/Account.service';
-import { RechargeComponent } from '../recharge/recharge.component';
 import { EditDescriptionComponent } from '../editDescription/editDescription.component';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';

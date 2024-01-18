@@ -1,8 +1,7 @@
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from '../services/Auth.service';
 import { inject } from '@angular/core';
-import { map, of, reduce, tap } from 'rxjs';
-import { HttpResponse } from '@angular/common/http';
+import { map } from 'rxjs';
 
 export const loginPageGuard: CanActivateFn = (route, state) => {
   const authService = inject(AuthService);

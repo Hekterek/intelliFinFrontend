@@ -1,32 +1,25 @@
 <div class="container">
     <div class="menuContainer">
-        <a routerLink="accounts" class="menuBox" routerLinkActive="w40"
-            [ngClass]="currentUrl === '/app/accounts' ? 'w40' : 'w20'">
+        <a routerLink="accounts" class="menuBox" routerLinkActive="w50"
+            [ngClass]="currentUrl === '/app/accounts' ? 'w50' : 'w25'">
             <div class="imgBox rotate45" routerLinkActive="boxBgActif">
                 <img class="img" src="./assets/icons/account_balance.svg" alt="">
             </div>
             <p>Accounts</p>
         </a>
-        <a routerLink="categories" routerLinkActive="w40" class="menuBox"
-            [ngClass]="currentUrl === '/app/categories' ? 'w40' : 'w20'">
+        <a routerLink="categories" routerLinkActive="w50" class="menuBox"
+            [ngClass]="currentUrl === '/app/categories' ? 'w50' : 'w25'">
             <div class="imgBox" routerLinkActive="boxBgActif">
                 <img class="img" src="./assets/icons/account_balance.svg" alt="">
             </div>
             <p>Categories</p>
         </a>
-        <a routerLink="transactions" class="menuBox" routerLinkActive="w40"
-            [ngClass]="currentUrl === '/app/transactions' ? 'w40' : 'w20'">
+        <a routerLink="transactions" class="menuBox" routerLinkActive="w50"
+            [ngClass]="currentUrl === '/app/transactions' ? 'w50' : 'w25'">
             <div class="imgBox rotate45" routerLinkActive="boxBgActif">
                 <img class="img" src="./assets/icons/account_balance.svg" alt="">
             </div>
             <p>Transactions</p>
-        </a>
-        <a routerLink="mygoals" class="menuBox" routerLinkActive="w40"
-            [ngClass]="currentUrl === '/app/mygoals' ? 'w40' : 'w20'">
-            <div class="imgBox rotate45" routerLinkActive="boxBgActif">
-                <img class="img" src="./assets/icons/account_balance.svg" alt="">
-            </div>
-            <p>My goals</p>
         </a>
     </div>
 </div>
