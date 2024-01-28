@@ -2,21 +2,21 @@
     <div class="menuContainer">
         <a routerLink="accounts" class="menuBox" routerLinkActive="w50"
             [ngClass]="currentUrl === '/app/accounts' ? 'w50' : 'w25'">
-            <div class="imgBox rotate45" routerLinkActive="boxBgActif">
+            <div routerLink="accounts" class="imgBox rotate45" routerLinkActive="boxBgActif">
                 <img class="img" src="./assets/icons/account_balance.svg" alt="">
             </div>
             <p>Accounts</p>
         </a>
         <a routerLink="categories" routerLinkActive="w50" class="menuBox"
             [ngClass]="currentUrl === '/app/categories' ? 'w50' : 'w25'">
-            <div class="imgBox" routerLinkActive="boxBgActif">
+            <div routerLink="categories" class="imgBox" routerLinkActive="boxBgActif">
                 <img class="img" src="./assets/icons/account_balance.svg" alt="">
             </div>
             <p>Categories</p>
         </a>
         <a routerLink="transactions" class="menuBox" routerLinkActive="w50"
             [ngClass]="currentUrl === '/app/transactions' ? 'w50' : 'w25'">
-            <div class="imgBox rotate45" routerLinkActive="boxBgActif">
+            <div routerLink="transactions" class="imgBox rotate45" routerLinkActive="boxBgActif">
                 <img class="img" src="./assets/icons/account_balance.svg" alt="">
             </div>
             <p>Transactions</p>

@@ -54,7 +54,6 @@ export class TransactionsComponent implements OnInit, OnDestroy {
       let transactionDate: Date = new Date(transaction.date);
       transactionDate.setHours(1, 0, 0, 0);
       const stringDate = transactionDate.toISOString();
-      console.log(stringDate);
 
       if (!this.categorizedTransactions[stringDate]) {
         this.categorizedTransactions[stringDate] = [];
@@ -62,8 +61,6 @@ export class TransactionsComponent implements OnInit, OnDestroy {
 
       this.categorizedTransactions[stringDate].push(transaction);
     });
-
-    console.log(this.categorizedTransactions);
   }
 
   getCategorizedTransactionsKeys(): string[] {

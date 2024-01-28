@@ -8,6 +8,7 @@ a {
 .container {
   display: flex;
   justify-content: center;
+  z-index: 5;
 }
 
 .menuContainer {
