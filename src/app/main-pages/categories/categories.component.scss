@@ -3,12 +3,14 @@
 .container {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
   //justify-content: space-evenly;
-  align-items: center;
+  // align-items: center;
   width: 100%;
   height: calc(100vh - 170px);
   // margin-top: 25px;
-  border: 1px solid red;
+  // border: 1px solid red;
 }
 
 .categoryContainer {
@@ -17,19 +19,38 @@
   align-items: center;
   width: 30%;
   height: 25vh;
-  margin: 0 auto;
-  border: 1px solid blue;
+  // margin: 0 auto;
+  // border: 1px solid blue;
+}
+
+.categoryContainer:nth-child(1),
+.categoryContainer:nth-child(4),
+.categoryContainer:nth-child(7) {
+  margin-left: 2.5%;
+}
+
+.categoryContainer:nth-child(2),
+.categoryContainer:nth-child(5),
+.categoryContainer:nth-child(8) {
+  margin: 0 2.5% 0 2.5%;
+}
+
+.categoryContainer:nth-child(2),
+.categoryContainer:nth-child(5),
+.categoryContainer:nth-child(8) {
+  margin-right: 2.45%;
 }
 
 .categoryName {
 }
 
 .budgetAmount {
+  font-size: 0.9rem;
   margin-top: 10px;
 }
 
 .categoryBox {
-  width: min(50%, 100px);
+  width: min(55%, 100px);
   aspect-ratio: 1/1;
   margin-top: 10px;
   background-color: green;

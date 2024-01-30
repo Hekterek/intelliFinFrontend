@@ -1,66 +1,10 @@
 <div class="container">
-    <div class="categoryContainer">
-        <p class="categoryName">Loyer</p>
-        <p class="budgetAmount">2.20</p>
+    <div class="categoryContainer" *ngFor="let category of categoriesFromDB">
+        <p class="categoryName">{{ category.name }}</p>
+        <p class="budgetAmount">{{ category.budget | number: '1.2-2' }}</p>
         <div class="categoryBox">
 
         </div>
-        <p class="amount">120.00</p>
-    </div>
-    <div class="categoryContainer">
-        <p class="categoryName">Loyer</p>
-        <p class="budgetAmount">2.20</p>
-        <div class="categoryBox">
-
-        </div>
-        <p class="amount">120.00</p>
-    </div>
-    <div class="categoryContainer">
-        <p class="categoryName">Loyer</p>
-        <p class="budgetAmount">2.20</p>
-        <div class="categoryBox">
-
-        </div>
-        <p class="amount">120.00</p>
-    </div>
-    <div class="categoryContainer">
-        <p class="categoryName">Loyer</p>
-        <p class="budgetAmount">2.20</p>
-        <div class="categoryBox">
-
-        </div>
-        <p class="amount">120.00</p>
-    </div>
-    <div class="categoryContainer">
-        <p class="categoryName">Loyer</p>
-        <p class="budgetAmount">2.20</p>
-        <div class="categoryBox">
-
-        </div>
-        <p class="amount">120.00</p>
-    </div>
-    <div class="categoryContainer">
-        <p class="categoryName">Loyer</p>
-        <p class="budgetAmount">2.20</p>
-        <div class="categoryBox">
-
-        </div>
-        <p class="amount">120.00</p>
-    </div>
-    <div class="categoryContainer">
-        <p class="categoryName">Loyer</p>
-        <p class="budgetAmount">2.20</p>
-        <div class="categoryBox">
-
-        </div>
-        <p class="amount">120.00</p>
-    </div>
-    <div class="categoryContainer">
-        <p class="categoryName">Loyer</p>
-        <p class="budgetAmount">2.20</p>
-        <div class="categoryBox">
-
-        </div>
-        <p class="amount">120.00</p>
+        <p class="amount">{{ category.amount | number: '1.2-2' }}</p>
     </div>
 </div>
