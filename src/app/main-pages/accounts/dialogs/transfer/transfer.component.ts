@@ -11,6 +11,7 @@ import { EditDescriptionComponent } from '../editDescription/editDescription.com
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { MAT_MOMENT_DATE_FORMATS } from '@angular/material-moment-adapter';
 import { AccountPickerComponent } from '../accountPicker/accountPicker.component';
+import { NotEnoughMoneyDialogComponent } from '../notEnoughMoneyDialog/notEnoughMoneyDialog.component';
 
 @Component({
   selector: 'app-transfer',
@@ -42,6 +43,7 @@ export class TransferComponent implements OnInit {
 
   ngOnInit() {
     this.fromAccount = this._data;
+
     // this.openToAccountPicker();
   }
 
@@ -138,6 +140,11 @@ export class TransferComponent implements OnInit {
   saveTransfer(event: Event) {
     event.preventDefault();
     const data = this.transactionForm.value as transferAccount;
+    if (this.fromAccount.amount < parseFloat(data.amount)) {
+      this.showTemporaryInfo();
+      return;
+    }
+
     data.date = new Date(data.date);
     data.fromAccountId = this.fromAccount.accountId;
     data.toAccountId = this.toAccount?.accountId;
@@ -149,5 +156,15 @@ export class TransferComponent implements OnInit {
           this.transferDialogRef.close(accounts);
         });
     }
+  }
+
+  showTemporaryInfo(): void {
+    const showInfo = this.dialog.open(NotEnoughMoneyDialogComponent, {
+      width: 'min(100%, 300px)',
+      panelClass: 'dialogOverflowHidden',
+    });
+    setTimeout(() => {
+      showInfo.close();
+    }, 3000);
   }
 }

@@ -17,6 +17,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { TransferComponent } from './accounts/dialogs/transfer/transfer.component';
 import { AccountPickerComponent } from './accounts/dialogs/accountPicker/accountPicker.component';
+import { NotEnoughMoneyDialogComponent } from './accounts/dialogs/notEnoughMoneyDialog/notEnoughMoneyDialog.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { AccountPickerComponent } from './accounts/dialogs/accountPicker/account
     RechargeComponent,
     TransferComponent,
     AccountPickerComponent,
+    NotEnoughMoneyDialogComponent,
   ],
   imports: [
     CommonModule,
