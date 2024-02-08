@@ -9,7 +9,6 @@
 
   <div class="amountContainer">
     <p class="titleAmount">Amount</p>
-    <!-- <p class="amount">{{ data.amount | currency:'EUR':'symbol':'1.2-2' }}</p> -->
     <input class="amount" readonly [value]="transactionForm.controls.amount.value | currency:'EUR':'symbol':'1.2-2'">
   </div>
 
