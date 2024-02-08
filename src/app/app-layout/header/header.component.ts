@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/Auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +9,7 @@ export class HeaderComponent implements OnInit {
   accountBalance = 3152.0;
   newDate: string = 'September 2023';
 
-  constructor(private authService: AuthService) {}
+  constructor() {}
 
   ngOnInit(): void {}
-
-  logout() {
-    this.authService.logout();
-  }
 }
