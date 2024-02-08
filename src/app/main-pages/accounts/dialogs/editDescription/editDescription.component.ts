@@ -16,17 +16,24 @@ export class EditDescriptionComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<EditDescriptionComponent>,
-    @Inject(MAT_DIALOG_DATA) data: any,
+    @Inject(MAT_DIALOG_DATA) private data: any,
     private fb: FormBuilder
   ) {
     this.title = data.title;
     this.form.controls.desc.setValue(data.desc);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadValues();
+  }
+
+  loadValues(): void {
+    this.title = this.data.title;
+    this.form.controls.desc.setValue(this.data.value);
+  }
 
   save() {
-    this.dialogRef.close(this.form.value);
+    this.dialogRef.close(this.form.controls.desc);
   }
 
   close() {

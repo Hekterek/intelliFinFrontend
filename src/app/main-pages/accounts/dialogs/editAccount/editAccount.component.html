@@ -1,4 +1,5 @@
-<form class="container">
+<form class="container"
+    [ngStyle]="{'padding-bottom': editedAccount.controls.mainAccount.value===false ? '60px' : '25px'}">
     <div class="header">
         <p>Edit account</p>
         <img class="doneIcon" src="./assets/icons/check.svg" alt="done" (click)="saveEditedAccount()">

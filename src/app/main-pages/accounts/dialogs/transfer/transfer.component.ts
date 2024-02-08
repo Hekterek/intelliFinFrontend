@@ -109,7 +109,9 @@ export class TransferComponent implements OnInit {
         });
 
         transferDialogRef.afterClosed().subscribe((account: account) => {
-          this.fromAccount = account;
+          if (account !== undefined) {
+            this.fromAccount = account;
+          }
         });
       });
   }

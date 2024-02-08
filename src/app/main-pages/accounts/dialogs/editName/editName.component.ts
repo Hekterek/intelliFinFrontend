@@ -20,13 +20,18 @@ export class EditNameComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<EditNameComponent>,
-    @Inject(MAT_DIALOG_DATA) data: any,
+    @Inject(MAT_DIALOG_DATA) private data: any,
     private fb: FormBuilder
-  ) {
-    this.title = data.title;
+  ) {}
+
+  ngOnInit() {
+    this.loadValues();
   }
 
-  ngOnInit() {}
+  loadValues(): void {
+    this.title = this.data.title;
+    this.form.controls.accountName.setValue(this.data.value);
+  }
 
   save() {
     this.dialogRef.close(this.form.value);

@@ -59,7 +59,6 @@ export class EditAccountComponent implements OnInit {
 
   saveEditedAccount() {
     const editedAccount = this.editedAccount.value as account;
-
     this.dialogRef.close(editedAccount);
   }
 
@@ -69,7 +68,7 @@ export class EditAccountComponent implements OnInit {
       maxWidth: '100vw',
       data: {
         title: 'Name',
-        value: this.editedAccount.controls.name.get('name'),
+        value: this.editedAccount.controls.name.value,
       },
     });
 
@@ -86,14 +85,13 @@ export class EditAccountComponent implements OnInit {
       maxWidth: '100vw',
       data: {
         title: 'Description',
+        value: this.editedAccount.controls.description.value,
       },
     });
 
     dialogRef.afterClosed().subscribe((data) => {
       if (data !== undefined || null) {
-        console.log(data);
-
-        this.editedAccount.controls.description.setValue(data.accountDesc);
+        this.editedAccount.controls.description.setValue(data.value);
       }
     });
   }

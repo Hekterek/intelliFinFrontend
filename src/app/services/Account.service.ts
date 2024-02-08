@@ -31,8 +31,6 @@ export class AccountService {
   }
 
   updateAccount(editedAccount: account): Observable<account> {
-    console.log(editedAccount);
-
     return this.httpClient.put<account>(
       `${restApiUrl}/api/account/${editedAccount.accountId}`,
       editedAccount,

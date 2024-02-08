@@ -13,9 +13,7 @@ export class AccountPickerComponent implements OnInit {
     private dialogRef: MatDialogRef<AccountPickerComponent>
   ) {}
 
-  ngOnInit() {
-    console.log(this.data);
-  }
+  ngOnInit() {}
 
   closeDialogAndPasschosedAccount(account: account) {
     this.dialogRef.close(account);

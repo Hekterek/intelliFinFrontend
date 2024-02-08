@@ -99,8 +99,6 @@ export class AccountsComponent implements OnInit, AfterViewInit {
     });
 
     dialogRef.afterClosed().subscribe((data) => {
-      console.log(data);
-
       if (data !== undefined && data !== true) {
         this.accountService.updateAccount(data).subscribe((editedAccount) => {
           if (this.mainAccount[0].accountId === editedAccount.accountId) {
