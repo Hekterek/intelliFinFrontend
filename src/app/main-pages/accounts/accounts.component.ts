@@ -8,7 +8,6 @@ import { ActivatedRoute } from '@angular/router';
 import { EditAccountComponent } from './dialogs/editAccount/editAccount.component';
 import { RechargeComponent } from './dialogs/recharge/recharge.component';
 import { TransferComponent } from './dialogs/transfer/transfer.component';
-import { NotEnoughMoneyDialogComponent } from './dialogs/notEnoughMoneyDialog/notEnoughMoneyDialog.component';
 
 @Component({
   selector: 'app-accounts',

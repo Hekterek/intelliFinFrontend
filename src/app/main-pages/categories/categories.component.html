@@ -7,4 +7,9 @@
         </div>
         <p class="amount">{{ category.amount | number: '1.2-2' }}</p>
     </div>
+    <div class="categoryContainer" [ngStyle]="{'margin-top': '52px'}" *ngIf="categoriesFromDB.length < 9">
+        <div class="addCategoryBtn" (click)="openAddNewCategoryDialog()">
+            +
+        </div>
+    </div>
 </div>

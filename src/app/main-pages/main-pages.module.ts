@@ -18,6 +18,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { TransferComponent } from './accounts/dialogs/transfer/transfer.component';
 import { AccountPickerComponent } from './accounts/dialogs/accountPicker/accountPicker.component';
 import { NotEnoughMoneyDialogComponent } from './accounts/dialogs/notEnoughMoneyDialog/notEnoughMoneyDialog.component';
+import { AddNewCategoryDialogComponent } from './categories/dialogs/addNewCategoryDialog/addNewCategoryDialog.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NotEnoughMoneyDialogComponent } from './accounts/dialogs/notEnoughMoney
     TransferComponent,
     AccountPickerComponent,
     NotEnoughMoneyDialogComponent,
+    AddNewCategoryDialogComponent,
   ],
   imports: [
     CommonModule,
