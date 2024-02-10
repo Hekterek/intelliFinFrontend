@@ -1,20 +1,27 @@
-<div class="container">
-  <div class="title">
-    <p>New Category</p>
-  </div>
-  <div class="topContainer">
-    <div>
-      <label for="name">Name: </label>
-      <input id="name">
+<form class="container" [formGroup]="newCategoryForm">
+  <div class="header">
+    <div class="titleContainer">
+      <p>X</p>
+      <p>New Category</p>
+      <p (click)="saveNewCategory()">Apply</p>
     </div>
-    <div>
-      <p>Icon </p>
-      <div>
-
-      </div>
+    <div class="nameContainer">
+      <input type="text" placeholder="Name" [formControl]="newCategoryForm.controls.name">
+    </div>
+    <div class="iconSelect" (click)="openSetIconDialog()">
+      <img [src]="newCategoryForm.controls.icon.value" alt="Category icon">
     </div>
   </div>
-  <div class="bottomContainer">
-
+  <div class="configContainer">
+    <label class="descLabel label" for="desc">Description</label>
+    <input name="desc" id="desc" class="descInput" [formControl]="newCategoryForm.controls.description">
+    <label class="budgetLabel label" for="budget">Budget
+      <input class="budgetInput" type="checkbox" name="budget" id="budget"
+        [formControl]="newCategoryForm.controls.isBudgetOn">
+    </label>
+    <div class="colorContainer" (click)="openSetColorDialog()">
+      <p>Color</p>
+      <div class="color" [ngStyle]="{'background-color': newCategoryForm.controls.color.value}"></div>
+    </div>
   </div>
-</div>
+</form>

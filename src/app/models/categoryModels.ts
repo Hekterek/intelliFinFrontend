@@ -5,5 +5,6 @@ export interface categoryDTO {
   icon: string;
   color: string;
   amount: number;
-  budget: number;
+  isBudgetOn: boolean;
+  budget?: number;
 }

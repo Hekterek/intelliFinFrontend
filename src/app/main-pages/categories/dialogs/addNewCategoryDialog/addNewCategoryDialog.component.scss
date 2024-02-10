@@ -1,13 +1,102 @@
 .container {
   width: 100%;
-  height: 100px;
+  // min-height: 100px;
   background-color: white;
 }
 
-.title {
+.header {
+  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   width: 100%;
   padding: 5px 0 5px 0;
   border-bottom: 1px solid black;
+}
+
+.titleContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 15px 20px 15px;
+}
+
+.nameContainer {
+  padding: 5px 25px 20px 25px;
+
+  & input {
+    width: 65%;
+    font-size: 1.1rem;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid black;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.iconSelect {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+  aspect-ratio: 1/1;
+  transform: translate(-25px, 50%);
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid black;
+
+  & img {
+    width: 30px;
+  }
+}
+
+.configContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 15px;
+
+  & .label {
+    margin: 15px 0 0 20px;
+  }
+
+  & .descInput {
+    width: 90%;
+    border: none;
+    margin: 0 auto 15px auto;
+    padding: 0 10px;
+    border-bottom: 1px solid black;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  & .budgetInput {
+    width: 15px;
+    margin-left: 35px;
+    margin-bottom: 35px;
+  }
+}
+
+.colorContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  // gap: 25px;
+  margin-left: 20px;
+  margin-bottom: 25px;
+}
+
+.color {
+  width: 25px;
+  height: 25px;
+  margin-left: 47px;
+  border-radius: 50%;
+  // background-color: red;
 }

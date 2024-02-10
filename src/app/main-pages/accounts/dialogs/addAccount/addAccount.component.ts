@@ -25,7 +25,7 @@ export class AddAccountComponent implements OnInit {
   });
 
   constructor(
-    private nameDialog: MatDialog,
+    private dialog: MatDialog,
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<AddAccountComponent>
   ) {
@@ -49,7 +49,7 @@ export class AddAccountComponent implements OnInit {
       title: 'Name',
     };
 
-    const dialogRef = this.nameDialog.open(EditNameComponent, dialogConfig);
+    const dialogRef = this.dialog.open(EditNameComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((data) => {
       if (data !== undefined || null) {
@@ -67,10 +67,7 @@ export class AddAccountComponent implements OnInit {
       title: 'Description',
     };
 
-    const dialogRef = this.nameDialog.open(
-      EditDescriptionComponent,
-      dialogConfig
-    );
+    const dialogRef = this.dialog.open(EditDescriptionComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((data) => {
       if (data !== undefined || null) {
@@ -88,7 +85,7 @@ export class AddAccountComponent implements OnInit {
       title: 'Choose icon',
     };
 
-    const dialogRef = this.nameDialog.open(
+    const dialogRef = this.dialog.open(
       SetAccountIconDialogComponent,
       dialogConfig
     );
@@ -109,10 +106,7 @@ export class AddAccountComponent implements OnInit {
       title: 'Choose color',
     };
 
-    const dialogRef = this.nameDialog.open(
-      SetAccountColorComponent,
-      dialogConfig
-    );
+    const dialogRef = this.dialog.open(SetAccountColorComponent, dialogConfig);
 
     dialogRef.afterClosed().subscribe((data) => {
       if (data !== undefined || null) {

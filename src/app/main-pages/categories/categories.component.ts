@@ -12,7 +12,7 @@ import { AddNewCategoryDialogComponent } from './dialogs/addNewCategoryDialog/ad
 })
 export class CategoriesComponent implements OnInit, OnDestroy {
   categorySub!: Subscription;
-  categoriesFromDB!: categoryDTO[];
+  categoriesFromDB: categoryDTO[] = [];
 
   constructor(
     private categoryService: CategoryService,
@@ -33,6 +33,10 @@ export class CategoriesComponent implements OnInit, OnDestroy {
   openAddNewCategoryDialog(): void {
     const dialogRef = this.dialog.open(AddNewCategoryDialogComponent, {
       width: 'min(90%, 400px)',
+    });
+
+    dialogRef.afterClosed().subscribe((data: categoryDTO) => {
+      console.log(data);
     });
   }
 }

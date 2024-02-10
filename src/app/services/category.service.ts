@@ -15,4 +15,10 @@ export class CategoryService {
       .get<categoryDTO[]>(restApiUrl + '/category', httpConfig)
       .pipe(retry(3));
   }
+
+  saveNewCategory(dataForm: categoryDTO): Observable<categoryDTO> {
+    return this.http
+      .post<categoryDTO>(restApiUrl + '/category', dataForm, httpConfig)
+      .pipe(retry(3));
+  }
 }
