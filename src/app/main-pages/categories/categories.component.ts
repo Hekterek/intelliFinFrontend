@@ -23,7 +23,7 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     this.categorySub = this.categoryService.getAll().subscribe((data) => {
       this.categoriesFromDB = data;
     });
-    this.openAddNewCategoryDialog();
+    // this.openAddNewCategoryDialog();
   }
 
   ngOnDestroy(): void {
@@ -36,7 +36,13 @@ export class CategoriesComponent implements OnInit, OnDestroy {
     });
 
     dialogRef.afterClosed().subscribe((data: categoryDTO) => {
-      console.log(data);
+      if (data !== undefined) {
+        this.categoryService
+          .saveNewCategory(data)
+          .subscribe((data: categoryDTO) => {
+            this.categoriesFromDB.push(data);
+          });
+      }
     });
   }
 }
