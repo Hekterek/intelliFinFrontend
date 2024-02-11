@@ -1,4 +1,3 @@
-import { DialogRef } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import {
@@ -59,8 +58,8 @@ export class AddNewCategoryDialogComponent implements OnInit {
 
   openSetColorDialog() {
     const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '100%';
-    dialogConfig.maxWidth = '100vw';
+    dialogConfig.width = '65%';
+    dialogConfig.maxWidth = '80vw';
 
     dialogConfig.data = {
       title: 'Choose color',
