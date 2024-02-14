@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { categoryDTO } from 'src/app/models/categoryModels';
 import { CategoryService } from 'src/app/services/category.service';
 import { AddNewCategoryDialogComponent } from './dialogs/addNewCategoryDialog/addNewCategoryDialog.component';
+import { AddExpenseComponent } from './dialogs/addExpense/addExpense.component';
 
 @Component({
   selector: 'app-categories',
@@ -43,6 +44,18 @@ export class CategoriesComponent implements OnInit, OnDestroy {
             this.categoriesFromDB.push(data);
           });
       }
+    });
+  }
+
+  openAddExpenseDialog(category: categoryDTO): void {
+    const dialogRef = this.dialog.open(AddExpenseComponent, {
+      position: {
+        bottom: '0',
+        // left: '0',
+      },
+      width: '100%',
+      maxWidth: '100vw',
+      data: category,
     });
   }
 }

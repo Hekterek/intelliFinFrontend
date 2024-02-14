@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="categoryContainer" *ngFor="let category of categoriesFromDB">
+    <div class="categoryContainer" *ngFor="let category of categoriesFromDB" (click)="openAddExpenseDialog(category)">
         <p class="categoryName">{{ category.name }}</p>
         <p class="budgetAmount">{{ category.budget | number: '1.2-2' }}</p>
         <div class="categoryBox">

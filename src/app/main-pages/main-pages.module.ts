@@ -19,6 +19,7 @@ import { TransferComponent } from './accounts/dialogs/transfer/transfer.componen
 import { AccountPickerComponent } from './accounts/dialogs/accountPicker/accountPicker.component';
 import { NotEnoughMoneyDialogComponent } from './accounts/dialogs/notEnoughMoneyDialog/notEnoughMoneyDialog.component';
 import { AddNewCategoryDialogComponent } from './categories/dialogs/addNewCategoryDialog/addNewCategoryDialog.component';
+import { AddExpenseComponent } from './categories/dialogs/addExpense/addExpense.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AddNewCategoryDialogComponent } from './categories/dialogs/addNewCatego
     AccountPickerComponent,
     NotEnoughMoneyDialogComponent,
     AddNewCategoryDialogComponent,
+    AddExpenseComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,84 @@
+<form class="container" [formGroup]="transactionForm">
+
+  <div class="accountsContainer">
+    <div class="fromAccount" [style.backgroundColor]="fromAccount.color" (click)="openFromAccountPicker()">
+      <p class="name">From Account</p>
+      <p class="accountName">{{ fromAccount.name }}</p>
+      <div class="bgIcon">
+        <img [src]="fromAccount.icon" alt="Account icon">
+      </div>
+    </div>
+    <div class="toAccount" [style.backgroundColor]="toAccount?.color || 'white'" (click)="openToAccountPicker()">
+      <p class="name">To Category</p>
+      <p class="accountName">{{ toAccount?.name || "Choose Category" }}</p>
+      <div class="bgIcon" *ngIf="toAccount">
+        <img [src]="toAccount.icon" alt="Account icon">
+      </div>
+    </div>
+  </div>
+
+  <div class="amountContainer">
+    <p class="titleAmount">Amount</p>
+    <!-- <p class="amount">{{ data.amount | currency:'EUR':'symbol':'1.2-2' }}</p> -->
+    <input class="amount" readonly [value]="transactionForm.controls.amount.value | currency:'EUR':'symbol':'1.2-2'">
+  </div>
+
+  <div class="notesContainer" (click)="openEditDescDialog()">
+    <input class="inputNotes" placeholder="Notes..." readonly [value]="transactionForm.controls.notes.value">
+  </div>
+
+  <div class="keyboardContainer">
+    <button class="btn btn-7" (click)="addNumber('7', $event)">
+      <p>7</p>
+    </button>
+    <button class="btn btn-8" (click)="addNumber('8', $event)">
+      <p>8</p>
+    </button>
+    <button class="btn btn-9" (click)="addNumber('9', $event)">
+      <p>9</p>
+    </button>
+    <button class="btn btn-backspace" (click)="removeLastNumber($event)">
+      <img src="./assets/icons/backspace.svg" alt="Backspace">
+    </button>
+    <button class="btn btn-4" (click)="addNumber('4', $event)">
+      <p>4</p>
+    </button>
+    <button class="btn btn-5" (click)="addNumber('5', $event)">
+      <p>5</p>
+    </button>
+    <button class="btn btn-6" (click)="addNumber('6', $event)">
+      <p>6</p>
+    </button>
+    <button class="btn btn-calendar" (click)="openDatepicker($event)">
+      <mat-datepicker touchUi #picker disabled="false"></mat-datepicker>
+      <mat-datepicker-toggle [for]="picker" (click)="openDatepicker($event)"></mat-datepicker-toggle>
+    </button>
+    <button class="btn btn-1" (click)="addNumber('1', $event)">
+      <p>1</p>
+    </button>
+    <button class="btn btn-2" (click)="addNumber('2', $event)">
+      <p>2</p>
+    </button>
+    <button class="btn btn-3" (click)="addNumber('3', $event)">
+      <p>3</p>
+    </button>
+    <button class="btn btn-done" (click)="saveTransfer($event)">
+      <img src="./assets/icons/check.svg" alt="done">
+    </button>
+    <button class="btn btn-00" (click)="addNumber('00', $event)">
+      <p>00</p>
+    </button>
+    <button class="btn btn-0" (click)="addNumber('0', $event)">
+      <p>0</p>
+    </button>
+    <button class="btn btn-comma" (click)="addNumber('.', $event)">
+      <p>,</p>
+    </button>
+  </div>
+
+  <div class="dateContainer">
+    <input class="displayNone" [matDatepicker]="picker" formControlName="date">
+    <p>{{ transactionForm.controls.date.value | date: "dd MMM yyyy" }}</p>
+  </div>
+
+</form>
