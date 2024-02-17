@@ -45,7 +45,7 @@ export class AccountService {
     );
   }
 
-  rechargeAccount(formData: rechargeAccount) {
+  rechargeAccount(formData: rechargeAccount): Observable<account[]> {
     console.log(formData);
 
     return this.httpClient.post<account[]>(
@@ -55,7 +55,7 @@ export class AccountService {
     );
   }
 
-  transferFromToAccount(formData: transferAccount) {
+  transferFromToAccount(formData: transferAccount): Observable<account[]> {
     console.log(formData);
 
     return this.httpClient.post<account[]>(

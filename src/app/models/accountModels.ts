@@ -23,7 +23,7 @@ export interface accountId {
 }
 
 export interface rechargeAccount {
-  toAccountId: number;
+  toAccount: number;
   amount: string;
   notes: string;
   date: Date;

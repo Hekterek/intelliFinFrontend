@@ -61,6 +61,7 @@ export class TransactionsComponent implements OnInit, OnDestroy {
 
       this.categorizedTransactions[stringDate].push(transaction);
     });
+    console.log(this.categorizedTransactions);
   }
 
   getCategorizedTransactionsKeys(): string[] {

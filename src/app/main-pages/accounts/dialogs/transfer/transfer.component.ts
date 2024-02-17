@@ -143,7 +143,7 @@ export class TransferComponent implements OnInit {
     event.preventDefault();
     const data = this.transactionForm.value as transferAccount;
     if (this.fromAccount.amount < parseFloat(data.amount)) {
-      this.showTemporaryInfo();
+      this.openNotEnoughMoneyDialog();
       return;
     }
 
@@ -160,7 +160,7 @@ export class TransferComponent implements OnInit {
     }
   }
 
-  showTemporaryInfo(): void {
+  openNotEnoughMoneyDialog(): void {
     const showInfo = this.dialog.open(NotEnoughMoneyDialogComponent, {
       width: 'min(100%, 300px)',
       panelClass: 'dialogOverflowHidden',
